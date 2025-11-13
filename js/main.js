@@ -166,7 +166,7 @@
       projectsGrid.appendChild(card);
     });
   }
-  fetch('/data/projects.json').then(r => r.json()).then(data => { projectsData = data; renderProjects(data); }).catch(() => {
+  fetch('./data/projects.json').then(r => r.json()).then(data => { projectsData = data; renderProjects(data); }).catch(() => {
     if (projectsGrid) projectsGrid.innerHTML = '<p>Failed to load projects.</p>';
   });
 
@@ -200,7 +200,7 @@
       blogGrid.appendChild(card);
     });
   }
-  fetch('/data/blog.json').then(r => r.json()).then(renderBlog).catch(() => {
+  fetch('./data/blog.json').then(r => r.json()).then(renderBlog).catch(() => {
     if (blogGrid) blogGrid.innerHTML = '<p>Failed to load blog posts.</p>';
   });
 
@@ -219,7 +219,7 @@
     // Skills progressive reveal (after render)
     setupSkillsReveal();
   }
-  fetch('/data/skills.json').then(r => r.json()).then(renderSkills).catch(() => {
+  fetch('./data/skills.json').then(r => r.json()).then(renderSkills).catch(() => {
     if (skillsGrid) skillsGrid.innerHTML = '<p>Failed to load skills.</p>';
   });
 
@@ -267,7 +267,7 @@
       educationList.appendChild(li);
     });
   }
-  fetch('/data/education.json').then(r => r.json()).then(renderEducation).catch(() => {
+  fetch('./data/education.json').then(r => r.json()).then(renderEducation).catch(() => {
     if (educationList) educationList.innerHTML = '<p>Failed to load education.</p>';
   });
 
@@ -299,7 +299,7 @@
       experienceList.appendChild(li);
     });
   }
-  fetch('/data/experience.json').then(r => r.json()).then(renderExperience).catch(() => {
+  fetch('./data/experience.json').then(r => r.json()).then(renderExperience).catch(() => {
     if (experienceList) experienceList.innerHTML = '<p>Failed to load experience.</p>';
   });
 
