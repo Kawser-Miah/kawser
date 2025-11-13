@@ -1,0 +1,6 @@
+# robots.txt for Kawser Ahmed Portfolio
+User-agent: *
+Allow: /
+
+# TODO: Update domain if needed
+Sitemap: https://kawser.dev/sitemap.xml

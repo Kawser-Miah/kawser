@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Flutter",
+    "icon": "📱"
+  },
+  {
+    "name": "Dart",
+    "icon": "🎯"
+  },
+  {
+    "name": "Kotlin",
+    "icon": "🤖"
+  },
+  {
+    "name": "Ktor",
+    "icon": "🚀"
+  },
+  {
+    "name": "Firebase",
+    "icon": "🔥"
+  },
+  {
+    "name": "MySQL",
+    "icon": "🗄️"
+  },
+  {
+    "name": "Git",
+    "icon": "🔧"
+  },
+  {
+    "name": "Python",
+    "icon": "🐍"
+  }
+]

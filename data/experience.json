@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Flutter App Developer",
+    "company": "eBooster (Coseries)",
+    "startDate": "June 2024",
+    "endDate": "Present",
+    "responsibilities": [
+      "Built gamification modules, quiz systems, and reading-progress tracking features.",
+      "Redesigned grammar and vocabulary pages for better UI/UX.",
+      "Improved data migration using SQLite (Floor) + SharedPreferences.",
+      "Added category-based learning progress and improved learning flow.",
+      "Fixed major bugs and optimized app performance.",
+      "Implemented state management using Flutter Bloc.",
+      "Followed Clean Architecture for scalable and testable code."
+    ]
+  }
+]
