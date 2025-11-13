@@ -5,7 +5,7 @@
     "short": "Secure PDF storage app with expiry tracking, push notifications, and Emergency Access feature.",
     "description": "Client Project: Built a secure PDF storage and document vault application. Implemented expiry date tracking with push notifications, Emergency Access feature for urgent retrieval, and developed a clean, modern UI from scratch. Integrated Firebase Auth and Firestore with strong structural design. Delivered bug-free final product using Clean Architecture and GetIt DI.",
     "tech": ["Flutter", "Dart", "Firebase", "Firestore", "Clean Architecture", "GetIt"],
-    "thumbnail": "/assets/images/project-namidvault.webp",
+    "thumbnail": "./assets/images/project-namidvault.webp",
     "live": "",
     "repo": ""
   },
@@ -15,7 +15,7 @@
     "short": "All-in-one Islamic app with 35k+ Hadith, prayer times, daily duas, Tasbih counter, Hijri calendar, and 99 Names of Allah.",
     "description": "Group Project (January 2025 - March 2025): DeenHub is an all-in-one Islamic app offering 35,000+ Hadith, location-based prayer times, daily duas, a Tasbih counter, Hijri calendar, and more. Users can bookmark Hadiths, track dhikr, and explore the 99 Names of Allah to enhance their spiritual journey. Available on Google Play Store. Developed key features: Hadith collection, 6 Dhikr Tasbih counter, and location-based prayer times. Implemented Clean Architecture and used Flutter Bloc for state management. Integrated GetIt for dependency injection, improving maintainability and scalability. Used SQLite (Floor package) for local data storage and optimized database queries. Implemented SharedPreferences to store Tasbih progress and last location for prayer times. Managed HUAWEI AppGallery & Amazon Appstore, handling compliance, updates, and app maintenance.",
     "tech": ["Flutter", "Dart", "SQLite", "Flutter Bloc", "Clean Architecture", "GetIt", "SharedPreferences"],
-    "thumbnail": "/assets/images/project-deenhub.webp",
+    "thumbnail": "./assets/images/project-deenhub.webp",
     "live": "",
     "repo": "https://github.com/yourusername/deenhub"
   },
@@ -25,7 +25,7 @@
     "short": "Vocabulary learning app with swipe cards, spaced repetition, and progress tracking.",
     "description": "Vocabulary learning app with swipe cards, spaced repetition, and progress tracking. Uses SQLite for offline data and Flutter Bloc for scalable state management.",
     "tech": ["Flutter", "Dart", "SQLite", "Flutter Bloc"],
-    "thumbnail": "/assets/images/project-englishbooster.webp",
+    "thumbnail": "./assets/images/project-englishbooster.webp",
     "live": "https://play.google.com/store/apps/details?id=com.coseries.english_booster",
     "repo": ""
   },
@@ -35,7 +35,7 @@
     "short": "A fully functional news application with REST API, Firebase Auth, SQLite offline storage, and Clean Architecture.",
     "description": "Project (January 2024 - March 2024): A fully functional news application developed using Flutter, integrating a REST API, Firebase Authentication, SQLite offline storage, Flutter Bloc, and Clean Architecture for maintainable and scalable code. Features include: Real-Time News Feed fetching articles from a RESTful API, Firebase Authentication for secure login, Offline Support with SQLite (automatically saves fetched news articles and displays them when offline), State Management using Flutter Bloc for predictable state handling, Clean Architecture with domain, data, and presentation layers for scalable and testable codebase, and Dark Mode Support with seamless theme switching.",
     "tech": ["Flutter", "Dart", "REST API", "Firebase Auth", "SQLite", "Flutter Bloc", "Clean Architecture"],
-    "thumbnail": "/assets/images/project-news-app.webp",
+    "thumbnail": "./assets/images/project-news-app.webp",
     "live": "",
     "repo": "https://github.com/yourusername/flutter-news-app"
   }
