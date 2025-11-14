@@ -430,4 +430,58 @@
       window.gtag('event', 'download', { 'event_category': 'Resume', 'event_label': 'Kawser Miah - Resume.pdf' });
     }
   }));
+
+  // Dark Mode Theme Toggle System
+  (function () {
+    const THEME_KEY = 'site-theme';
+    const html = document.documentElement;
+    const toggle = document.getElementById('theme-toggle');
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+
+    function getPreferredTheme() {
+      const saved = localStorage.getItem(THEME_KEY);
+      if (saved === 'light' || saved === 'dark') return saved;
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    function applyTheme(theme) {
+      if (theme === 'dark') {
+        html.setAttribute('data-theme', 'dark');
+        toggle.setAttribute('aria-pressed', 'true');
+        toggle.querySelector('.theme-toggle__icon').textContent = '☀️';
+        if (metaTheme) metaTheme.setAttribute('content', '#0b0f12');
+      } else {
+        html.removeAttribute('data-theme');
+        toggle.setAttribute('aria-pressed', 'false');
+        toggle.querySelector('.theme-toggle__icon').textContent = '🌙';
+        if (metaTheme) metaTheme.setAttribute('content', '#f7f7f9');
+      }
+    }
+
+    function toggleTheme() {
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      const next = isDark ? 'light' : 'dark';
+      applyTheme(next);
+      localStorage.setItem(THEME_KEY, next);
+    }
+
+    applyTheme(getPreferredTheme());
+
+    toggle.addEventListener('click', toggleTheme);
+    toggle.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleTheme();
+      }
+    });
+  })();
+
+  // Reduced Motion Support
+  (function() {
+    try {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('reduced-motion');
+      }
+    } catch (e) {}
+  })();
 })();
