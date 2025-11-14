@@ -413,6 +413,15 @@ img.decorative--tint {
 .modal-media img { border-radius: 10px; box-shadow: var(--shadow); margin-top: 10px; }
 .modal-links { display: flex; gap: 10px; margin-top: 12px; }
 
+/* Modal tech badges spacing */
+.modal-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 6px;
+  align-items: center;
+  margin: 12px 0;
+}
+
 /* Contact */
 .contact-inner { display: grid; gap: 24px; align-items: start; }
 @media (min-width: 900px) { .contact-inner { grid-template-columns: 1fr 1fr; } }
