@@ -158,7 +158,7 @@
           </div>
           <div class="project-actions">
             ${p.live ? `<a class="btn btn-secondary" href="${p.live}" target="_blank" rel="noopener noreferrer">Live Demo</a>` : ''}
-            <a class="btn btn-primary" href="${p.repo}" target="_blank" rel="noopener noreferrer">Source Code</a>
+            ${p.repo ? `<a class="btn btn-primary" href="${p.repo}" target="_blank" rel="noopener noreferrer">Source Code</a>` : ''}
           </div>
         </div>`;
       card.addEventListener('click', () => openModal(p, card));
@@ -329,7 +329,7 @@
     tech.innerHTML = project.tech.map(t => `<span class="tag">${t}</span>`).join('');
     media.innerHTML = `<img src="${project.thumbnail}" alt="Screenshot of ${project.title}" loading="lazy">`;
     links.innerHTML = `${project.live ? `<a class='btn btn-secondary' href='${project.live}' target='_blank' rel='noopener noreferrer'>Live Demo</a>` : ''}
-                      <a class='btn btn-primary' href='${project.repo}' target='_blank' rel='noopener noreferrer'>Source Code</a>`;
+                      ${project.repo ? `<a class='btn btn-primary' href='${project.repo}' target='_blank' rel='noopener noreferrer'>Source Code</a>` : ''}`;
 
     modal.classList.remove('hidden');
     requestAnimationFrame(() => modal.classList.add('open'));
