@@ -1,120 +1,234 @@
-# Kawser Ahmed — Portfolio (HTML/CSS/JS)
+# 🚀 Developer Portfolio Website – Kawser Miah
 
-A clean, responsive single-page portfolio for Kawser Ahmed. Built with semantic HTML5, modern CSS, and vanilla JavaScript. It includes smooth navigation, project modals, Formspree contact form, downloadable CV, and analytics placeholders.
+A modern, fully responsive, dark-mode enabled portfolio website showcasing my work as a **Flutter & Mobile Application Developer**.
 
-## Features
-- Minimal, professional design with elegant micro-animations
-- Sticky navigation with active section highlighting
-- Hero typewriter effect (respects `prefers-reduced-motion`)
-- Skills grid with progressive reveal
-- Projects loaded from `data/projects.json`
- - Blog posts loaded from `data/blog.json`
-- Accessible project modal (focus trap, Esc/overlay close)
-- Contact form (Formspree placeholder) + success/error messaging
-- Downloadable CV with analytics event
-- SEO meta tags, Open Graph/Twitter cards, JSON-LD Person schema
-- robots.txt and sitemap.xml
-- Optional GitHub Actions workflow for GitHub Pages
+🔗 **Live Website:** https://kawser-miah.github.io/kawser/  
+📧 **Email:** kawsermiah.cse@gmail.com  
+🐙 **GitHub:** https://github.com/Kawser-Miah  
 
-## Getting started
+---
 
-### Prerequisites
-- No build step required. Any static server or directly opening `index.html` works.
+## 📌 Overview
 
-### Run locally
-- Option 1: Open the file directly
-  - Open `index.html` in your browser
-- Option 2: Use a tiny static server
-  - Using Node.js:
-    ```bash
-    npx http-server -p 5173 .
-    ```
-  - Then visit http://localhost:5173
+This platform serves as my official developer portfolio.  
+It displays my mobile apps, technical skills, resume, APK downloads, and professional identity.
 
-### Replace placeholders (TODOs)
-- Images in `assets/images/`:
-  - `headshot.png`, `og-image.webp`, and project images (`project-*.webp`)
-- Resume file: `assets/resume/Kawser Miah - Resume.pdf`
-- Social links in `index.html` (GitHub, LinkedIn, Twitter)
-- Formspree ID in the contact form action attribute: `https://formspree.io/f/{your-id}`
-- Google Analytics ID (`G-XXXXXXX`) or remove analytics snippet entirely
-- Canonical URL and sitemap URL (`kawser.dev`) if your domain differs
+The site is built using **pure HTML, CSS, and JavaScript**, with dynamic project loading via JSON.  
+It is fast, lightweight, and extremely easy to maintain.
 
-## Data model
-`data/projects.json` contains an array of projects with:
+---
+
+## 🧩 Features
+
+### ✔ Fully Responsive UI  
+- Optimized for mobile, tablet, and desktop  
+- Clean grid layout  
+- Animated hamburger navigation  
+
+### ✔ Dark Mode  
+- System theme detection  
+- Manual toggle  
+- Smooth transitions  
+- LocalStorage persistence  
+
+### ✔ Dynamic Project Cards  
+- Data loaded from `/data/projects.json`  
+- Every project includes:
+  - Thumbnail  
+  - Description  
+  - Tech stack  
+  - Live demo / APK download  
+  - GitHub Repo  
+
+### ✔ APK & CV Download System  
+- Same-origin instant downloads  
+- Cross-origin blob fallback  
+- Identical experience for both APK and CV  
+
+### ✔ Accessibility  
+- ARIA attributes  
+- Keyboard navigation  
+- Focus-visible styles  
+- Reduced motion support  
+
+### ✔ SEO Optimized  
+- OpenGraph tags  
+- Meta description  
+- JSON-LD Person schema  
+- Lazy loading  
+
+---
+
+## 🛠️ Tech Stack
+
+- **HTML5**  
+- **CSS3**  
+- **JavaScript (ES6)**  
+- **JSON data**  
+- No frameworks, no backend  
+
+---
+
+## 📂 Folder Structure
+
+```
+root/
+│── index.html
+│── style.css
+│── main.js
+│── README.md
+│── /assets
+│     ├── /images
+│     ├── /icons
+│     ├── /apk
+│     └── /resume
+└── /data
+      └── projects.json
+```
+
+---
+
+## 🧱 Project Data System
+
+All projects are defined inside:
+
+```
+/data/projects.json
+```
+
+Example structure:
+
 ```json
 {
-  "id": "string",
-  "title": "string",
-  "short": "1-2 line summary",
-  "description": "longer description",
-  "tech": ["Tech", "Tags"],
-  "thumbnail": "/assets/images/project-name.webp",
-  "live": "https://... (optional)",
-  "repo": "https://github.com/..."
+  "name": "DeenHub",
+  "thumbnail": "/assets/images/deenhub-banner.png",
+  "description": "An all-in-one Islamic lifestyle mobile application.",
+  "tech": ["Flutter", "Dart", "Firebase"],
+  "live": "/assets/apk/deenhub-v1.apk",
+  "repo": "https://github.com/Kawser-Miah/DeenHub"
 }
 ```
 
-`data/blog.json` contains an array of blog entries with:
-```json
-{
-  "title": "string",
-  "summary": "short description",
-  "url": "https://external-blog-post",
-  "published": "YYYY-MM-DD"
-}
+The website auto-renders cards based on this JSON.  
+No HTML editing is required.
+
+---
+
+## 📥 APK Download System
+
+### Behavior:
+- If `.apk` → download  
+- If URL → open in new tab  
+- If `.pdf` → trigger CV download  
+
+Example button:
+
+```html
+<a class="btn btn-secondary btn-download-apk" data-apk="/assets/apk/app.apk">
+  Download APK
+</a>
 ```
 
-## Performance and accessibility
-- Images use WebP placeholders and `loading="lazy"`
-- Animations use opacity/transform; reduced motion respected
-- Focus-visible outlines and keyboard-accessible components
-- External JS is deferred
+Handled by JavaScript:
 
-## Minify for production (optional)
-You can minify CSS/JS before deploying. Example using npx (no install):
-```bash
-# Minify CSS
-npx cssnano css/style.css css/style.min.css
-# Minify JS
-npx terser js/main.js -o js/main.min.js --compress --mangle
+```js
+async function forceDownloadFile(url, filename) { ... }
 ```
-Then update `index.html` to load the `.min` files. Alternatively use any static host’s built-in optimizations.
 
-## Deployment
+---
 
-### Netlify
-1. Push this project to a GitHub repository
-2. In Netlify, "Add new site" → "Import an existing project"
-3. Pick your repo; Build command: none; Publish directory: `/` (root)
-4. Or drag & drop the folder onto app.netlify.com
+## 📄 CV Download System
 
-### GitHub Pages (gh-pages branch)
-- Simple option: use the included workflow
-- Or manually:
-  1. Create a `gh-pages` branch
-  2. Copy the site contents to that branch and push
-  3. In repo Settings → Pages, select `gh-pages` as the source
+CVs use the *same system* as APK downloads:
 
-### GitHub Actions workflow
-A workflow is included in `.github/workflows/deploy.yml` that publishes to `gh-pages` on push to `main`.
+```html
+<a class="btn btn-primary btn-download-cv"
+   data-cv="/assets/resume/Kawser-Miah-Resume.pdf">
+   Download CV
+</a>
+```
 
-## Recommended Git workflow
-- Create a branch for your first commit:
-  - `feature/initial-setup`
-- Commit message suggestions:
-  - `chore: initial site structure and assets`
-  - `feat: add hero, about, skills, projects sections`
-  - `feat: add modal component and contact form`
-  - `chore: add resume download and analytics placeholder`
+JavaScript ensures a guaranteed download regardless of domain.
 
-## QA checklist
-- [ ] Keyboard navigation (Tab through header, open/close modal with Enter/Esc)
-- [ ] Modal closes on overlay click and Esc; focus returns to invoking element
-- [ ] Contact form submits to Formspree test endpoint and shows success
-- [ ] Resume download links trigger download and analytics event
-- [ ] Responsive across 320px–1366px
+---
 
-## License
-This project is provided as a template. Replace content with your own. Images are placeholders.
-# kawser
+## 🌗 Dark Mode System
+
+Dark mode works using:
+
+- CSS Custom Properties  
+- `[data-theme="dark"]` attribute  
+- System theme detection  
+- LocalStorage saving  
+- Fully themed UI elements  
+
+Dark mode affects:
+- Cards  
+- Text  
+- Buttons  
+- Background  
+- Navbar  
+- Shadows  
+
+---
+
+## 🚀 Deployment
+
+This is a static site.  
+Deploy anywhere:
+
+### Recommended:
+- Netlify  
+- GitHub Pages  
+- Vercel  
+- Cloudflare Pages  
+
+No backend or build tools required.
+
+---
+
+## 🧰 Updating Projects
+
+1. Open:
+   ```
+   /data/projects.json
+   ```
+2. Add/edit project entries  
+3. Save  
+4. Refresh the site  
+
+Instant update — no coding required.
+
+---
+
+## 🧑‍💻 About Me
+
+**Name:** Kawser Miah  
+**Role:** Mobile Application Developer  
+
+**Skills:**  
+- Flutter  
+- Dart  
+- Firebase  
+- Kotlin  
+- Ktor  
+- MySQL  
+- Git  
+- Python  
+
+I specialize in building scalable mobile apps with clean architecture and modern UI principles.
+
+---
+
+## 📬 Contact
+
+📧 **Email:** kawsermiah.cse@gmail.com  
+🌐 **Portfolio:** https://kawser-miah.github.io/kawser/  
+🐙 **GitHub:** https://github.com/Kawser-Miah  
+🔗 **LinkedIn:** https://www.linkedin.com/in/kawser-miah/ 
+
+---
+
+## 📜 License
+
+This portfolio, including all design, code, layout, and content, is personal and may not be copied without permission.
