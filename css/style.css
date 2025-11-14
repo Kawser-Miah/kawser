@@ -523,6 +523,30 @@ input:focus, textarea:focus { border-color: var(--accent-2); box-shadow: 0 0 0 3
   .about-facts { list-style: none; padding: 0; }
   .contact-email { justify-content: center; flex-wrap: wrap; }
   .contact-actions { justify-content: center; }
+  
+  /* Mobile navbar: shrink CV button and adjust spacing when menu opens */
+  .download-btn {
+    transition: all 0.3s var(--ease);
+  }
+  
+  .nav.is-open ~ .download-btn {
+    font-size: 0;
+    padding: 10px 12px;
+  }
+  
+  .nav.is-open ~ .download-btn::before {
+    content: "CV";
+    font-size: 14px;
+    font-weight: 600;
+  }
+  
+  .theme-toggle {
+    transition: transform 0.3s var(--ease);
+  }
+  
+  .nav.is-open ~ .theme-toggle {
+    transform: translateX(8px);
+  }
 }
 
 /* Responsive - Small screens: tighter badge spacing */
