@@ -297,6 +297,11 @@ img.decorative--tint {
 .skill-badge:hover { transform: translateY(-2px) scale(1.08); box-shadow: 0 12px 32px rgba(2, 6, 23, 0.12), 0 2px 8px rgba(2, 6, 23, 0.08); }
 .skill-badge.is-visible { transform: translateY(0); opacity: 1; }
 
+/* Dark mode skill badge hover */
+:root[data-theme="dark"] .skill-badge:hover {
+  box-shadow: 0 12px 32px rgba(24, 183, 163, 0.15), 0 2px 8px rgba(24, 183, 163, 0.08);
+}
+
 /* Projects */
 .projects-grid { 
   display: grid; 
