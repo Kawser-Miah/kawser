@@ -356,12 +356,14 @@
   }
 
   .nav-link:hover,
-  .nav-link.active {
+  .nav-link.active,
+  .nav-link[aria-current="true"] {
     color: var(--accent);
   }
 
   .nav-link:hover::after,
-  .nav-link.active::after {
+  .nav-link.active::after,
+  .nav-link[aria-current="true"]::after {
     transform: scaleX(1);
   }
 
