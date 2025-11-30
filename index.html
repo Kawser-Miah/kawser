@@ -1,82 +1,161 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kawser Miah | Mobile Application Developer</title>
-  <meta name="description" content="Kawser Miah is a Mobile Application Developer specializing in Flutter. Explore my portfolio, projects, and blog on mobile app development.">
-  
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="./assets/images/headshot.png">
-  <link rel="apple-touch-icon" href="./assets/images/headshot.png">
-  <link rel="canonical" href="https://kawser.dev/" />
-  <meta name="theme-color" content="#f7f7f9" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kawser Miah | Mobile Application Developer & Flutter Specialist</title>
+  <meta name="description"
+    content="Mobile Application Developer specializing in Flutter, Clean Architecture, and modern mobile technologies. Building production-ready apps with exceptional user experiences.">
+  <meta name="keywords"
+    content="Flutter Developer, Mobile App Development, Android, iOS, Firebase, Clean Architecture, Kawser Miah">
+  <meta name="author" content="Kawser Miah">
 
-  <!-- Open Graph -->
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/headshot.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/headshot.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/headshot.png">
+  <link rel="canonical" href="https://kawser.dev/" />
+
+  <!-- Theme Colors -->
+  <meta name="theme-color" content="#0f766e" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#14b8a6" media="(prefers-color-scheme: dark)" />
+
+  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Kawser Miah Portfolio" />
   <meta property="og:title" content="Kawser Miah | Mobile Application Developer" />
-  <meta property="og:description" content="I build elegant, fast, and reliable apps with Flutter and modern web technologies." />
-  <meta property="og:image" content="./assets/images/og-image.webp" />
+  <meta property="og:description"
+    content="I build elegant, fast, and reliable mobile apps with Flutter and modern technologies." />
+  <meta property="og:image" content="https://kawser.dev/assets/images/og-image.webp" />
+  <meta property="og:image:alt" content="Kawser Miah - Mobile Application Developer" />
   <meta property="og:url" content="https://kawser.dev/" />
+  <meta property="og:locale" content="en_US" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@kawsermiah" />
+  <meta name="twitter:creator" content="@kawsermiah" />
   <meta name="twitter:title" content="Kawser Miah | Mobile Application Developer" />
-  <meta name="twitter:description" content="I build elegant, fast, and reliable apps with Flutter and modern web technologies." />
-  <meta name="twitter:image" content="./assets/images/og-image.webp" />
+  <meta name="twitter:description"
+    content="I build elegant, fast, and reliable mobile apps with Flutter and modern technologies." />
+  <meta name="twitter:image" content="https://kawser.dev/assets/images/og-image.webp" />
 
-  <!-- Fonts: Inter (normal + italic) -->
+  <!-- Fonts: Inter with font-display for better performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
 
+  <!-- Preload critical assets -->
+  <link rel="preload" href="./css/style.css" as="style" />
+  <link rel="preload" href="./js/main.js" as="script" />
+  <link rel="preload" href="./assets/images/headshot.png" as="image" />
+
+  <!-- Stylesheet -->
   <link rel="stylesheet" href="./css/style.css" />
 
-  <!-- JSON-LD Person structured data -->
+  <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Kawser Miah",
-    "jobTitle": "Mobile Application Developer",
-    "email": "mailto:kawsermiah.cse@gmail.com",
-    "url": "https://kawser.dev/",
-    "sameAs": [
-      "https://github.com/Kawser-Miah",
-      "https://www.linkedin.com/in/kawser-miah/",
-      "https://www.facebook.com/md.kawser.ahmed.762580"
-    ]
-  }
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Kawser Miah",
+      "alternateName": "Kawser Ahmed",
+      "jobTitle": "Mobile Application Developer",
+      "description": "Mobile Application Developer specializing in Flutter and modern mobile technologies",
+      "email": "kawsermiah.cse@gmail.com",
+      "url": "https://kawser.dev/",
+      "image": "https://kawser.dev/assets/images/headshot.png",
+      "sameAs": [
+        "https://github.com/Kawser-Miah",
+        "https://www.linkedin.com/in/kawser-miah/",
+        "https://www.facebook.com/md.kawser.ahmed.762580"
+      ],
+      "knowsAbout": [
+        "Flutter Development",
+        "Mobile Application Development",
+        "Clean Architecture",
+        "Firebase",
+        "SQLite",
+        "Dart Programming"
+      ],
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Green University of Bangladesh"
+      }
+    }
   </script>
 
-  <!-- Google Analytics (gtag.js) - TODO: replace G-XXXXXXX with your Measurement ID or remove if not used -->
+  <!-- Breadcrumb Structured Data -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://kawser.dev/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Projects",
+          "item": "https://kawser.dev/#projects"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Blog",
+          "item": "https://kawser.dev/#blog"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Contact",
+          "item": "https://kawser.dev/#contact"
+        }
+      ]
+    }
+  </script>
+
+  <!-- Google Analytics (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);} // eslint-disable-line
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-    gtag('config', 'G-XXXXXXX');
+    gtag('config', 'G-XXXXXXX', {
+      'anonymize_ip': true,
+      'cookie_flags': 'SameSite=None;Secure'
+    });
   </script>
-  <!-- Plausible (alternative analytics) - TODO: replace domain or remove if not used -->
-  <!-- <script defer data-domain="kawser.dev" src="https://plausible.io/js/script.js"></script> -->
 </head>
 
 <body>
-  <a class="skip-link" href="#home">Skip to content</a>
+  <!-- Skip Navigation -->
+  <a class="skip-link" href="#main">Skip to main content</a>
 
+  <!-- Header -->
   <header id="header" class="site-header" role="banner">
     <div class="container header-inner">
-      <a href="#home" class="logo" aria-label="Go to home">
+      <!-- Logo -->
+      <a href="#home" class="logo" aria-label="Kawser Miah - Home">
         <span aria-hidden="true">KM</span>
       </a>
-      <button class="nav-toggle" aria-label="Toggle navigation" aria-controls="navList" aria-expanded="false">
+
+      <!-- Mobile Menu Toggle -->
+      <button class="nav-toggle" aria-label="Toggle navigation menu" aria-controls="navList" aria-expanded="false">
         <span class="nav-toggle-bar" aria-hidden="true"></span>
         <span class="nav-toggle-bar" aria-hidden="true"></span>
         <span class="nav-toggle-bar" aria-hidden="true"></span>
       </button>
-      <nav class="nav" aria-label="Primary navigation">
+
+      <!-- Navigation -->
+      <nav class="nav" aria-label="Main navigation">
         <ul id="navList" class="nav-list">
-          <li><a href="#home" class="nav-link" data-link="home">Home</a></li>
+          <li><a href="#home" class="nav-link active" data-link="home">Home</a></li>
           <li><a href="#about" class="nav-link" data-link="about">About</a></li>
           <li><a href="#education" class="nav-link" data-link="education">Education</a></li>
           <li><a href="#skills" class="nav-link" data-link="skills">Skills</a></li>
@@ -87,243 +166,417 @@
           <li><a href="#contact" class="nav-link" data-link="contact">Contact</a></li>
         </ul>
       </nav>
-  <button id="theme-toggle" aria-label="Toggle dark mode" class="theme-toggle" aria-pressed="false" title="Toggle dark mode">
-    <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
-    <span class="sr-only">Toggle dark mode</span>
-  </button>
-  <a class="btn btn-primary download-btn" href="./assets/resume/Kawser%20Miah%20-%20Resume.pdf" download="Kawser Miah - Resume.pdf" aria-label="Download resume PDF" data-analytics="download-cv">Download CV</a>
+
+      <!-- Theme Toggle -->
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+        <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
+      </button>
+
+      <!-- Download CV Button -->
+      <a class="btn btn-primary download-btn" href="./assets/resume/Kawser%20Miah%20-%20Resume.pdf"
+        download="Kawser_Miah_Resume.pdf" aria-label="Download resume as PDF" data-analytics="download-cv-header">
+        <span>Download CV</span>
+      </a>
     </div>
   </header>
 
-  <main id="main" class="site-main" tabindex="-1">
-    <!-- Hero -->
-    <section id="home" class="section hero reveal" aria-labelledby="home-title">
+  <!-- Main Content -->
+  <main id="main" class="site-main">
+
+    <!-- Hero Section -->
+    <section id="home" class="section hero reveal" aria-labelledby="hero-title">
       <div class="container hero-inner">
         <div class="hero-text">
-          <h1 id="home-title" class="hero-title">Kawser Miah</h1>
-          <p class="hero-highlight">Mobile App Developer <span aria-hidden="true">•</span> Flutter Specialist</p>
-          <p class="hero-role">Mobile Application Developer</p>
-          <p class="hero-tagline" aria-live="polite">
-            <span id="typewriter" data-text="I build fast, reliable, and user-friendly mobile apps using Flutter. I focus on clean code, modern UI, scalable architecture, and performance optimization to deliver production-ready mobile applications."></span>
-            <noscript>I build fast, reliable, and user-friendly mobile apps using Flutter. I focus on clean code, modern UI, scalable architecture, and performance optimization to deliver production-ready mobile applications.</noscript>
-          </p>
-          <div class="hero-ctas">
-            <a class="btn btn-secondary" href="#projects" aria-label="View my projects">View Projects</a>
-            <a class="btn btn-primary" href="./assets/resume/Kawser%20Miah%20-%20Resume.pdf" download="Kawser Miah - Resume.pdf" data-analytics="download-cv" aria-label="Download resume PDF">Download CV</a>
-          </div>
-          <ul class="social-list" aria-label="Social profiles">
-            <li>
-              <a href="https://github.com/Kawser-Miah" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.02c-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.35-1.77-1.35-1.77-1.1-.75.08-.73.08-.73 1.22.09 1.86 1.25 1.86 1.25 1.08 1.85 2.83 1.31 3.52 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.48-1.33-5.48-5.9 0-1.3.47-2.36 1.24-3.19-.13-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.22a11.4 11.4 0 0 1 6 0c2.3-1.54 3.3-1.22 3.3-1.22.66 1.65.25 2.87.12 3.17.77.83 1.24 1.89 1.24 3.19 0 4.58-2.81 5.6-5.49 5.9.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 12 .5Z"/></svg>
-              </a>
-            </li>
-            <li>
-              <a href="https://www.linkedin.com/in/kawser-miah/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.95v5.66H9.37V9h3.4v1.56h.05c.47-.89 1.63-1.83 3.35-1.83 3.58 0 4.24 2.36 4.24 5.42v6.3ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>
-              </a>
-            </li>
-            <li>
-              <a href="https://www.facebook.com/md.kawser.ahmed.762580" target="_blank" rel="noopener noreferrer" aria-label="Facebook profile">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div class="hero-visual" id="heroVisual">
-          <img src="./assets/images/headshot.png" alt="Portrait of Kawser Miah, Mobile Application Developer" loading="eager" width="320" height="320" role="button" tabindex="0" aria-pressed="false" aria-label="Zoom portrait image" />
-        </div>
-        </div>
-      </div>
-    </section>
+          <h1 id="hero-title" class="hero-title">
+            Hi, I'm <span class="highlight">Kawser Miah</span>
+          </h1>
 
-    <!-- About -->
-    <section id="about" class="section reveal" aria-labelledby="about-title">
-      <div class="container about-grid">
-        <div class="about-photo">
-          <img src="./assets/images/headshot.png" alt="Kawser Miah smiling, portrait photo" loading="lazy" width="320" height="320" />
-        </div>
-        <div class="about-content">
-          <h2 id="about-title">About</h2>
-          <p>
-            I'm Kawser — a passionate Mobile Application Developer specializing in Flutter and modern mobile technologies. I build production-grade apps using Clean Architecture, Flutter Bloc, Firebase, and SQLite. I enjoy creating meaningful products, solving challenging problems, and continuously improving code quality and performance.
-          </p>
-          <p style="color: var(--muted); margin-bottom: 4px;"><strong>Interests:</strong></p>
-          <ul class="about-facts" aria-label="Interests">
-            <li>Mobile App Development</li>
-            <li>Competitive Gaming (PUBG)</li>
-            <li>eSports</li>
-            <li>Writing Technical Articles</li>
-            <li>Exploring New Technologies</li>
-          </ul>
-        </div>
-      </div>
-    </section>    <!-- Education -->
-    <section id="education" class="section reveal" aria-labelledby="education-title">
-      <div class="container">
-        <h2 id="education-title">Education</h2>
-        <ul class="education-list" id="education-list" role="list">
-          <!-- Loaded from education.json -->
-        </ul>
-      </div>
-    </section>
-
-    <!-- Skills -->
-    <section id="skills" class="section reveal" aria-labelledby="skills-title">
-      <div class="container">
-        <h2 id="skills-title">Skills</h2>
-        <ul class="skills-grid" id="skills-grid" role="list">
-          <!-- Loaded from skills.json -->
-        </ul>
-      </div>
-    </section>
-
-    <!-- Experience -->
-    <section id="experience" class="section reveal" aria-labelledby="experience-title">
-      <div class="container">
-        <h2 id="experience-title">Experience</h2>
-        <ul class="education-list" id="experience-list" role="list">
-          <!-- Loaded from experience.json -->
-        </ul>
-      </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects" class="section reveal" aria-labelledby="projects-title">
-      <div class="container">
-        <h2 id="projects-title">Projects</h2>
-        <div id="projects-grid" class="projects-grid" aria-live="polite">
-          <noscript>
-            <p>Please enable JavaScript to see projects.</p>
-          </noscript>
-        </div>
-      </div>
-    </section>
-
-    <!-- Achievements -->
-    <section id="achievements" class="section reveal" aria-labelledby="achievements-title">
-      <div class="container">
-        <h2 id="achievements-title">Achievements</h2>
-        <ul class="education-list" role="list">
-          <li class="education-item">
-            <article class="education-card" aria-label="Vice Chancellor's List Achievement">
-              <div class="education-icon award-badge-icon" aria-hidden="true">
-                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="20" cy="18" r="11" fill="currentColor" opacity="0.15"/>
-                  <circle cx="20" cy="18" r="9" stroke="currentColor" stroke-width="2.5" fill="none"/>
-                  <circle cx="20" cy="18" r="6.5" stroke="currentColor" stroke-width="1" fill="none" opacity="0.4"/>
-                  <path d="M17 18L19 20L23 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M15 26L13 38L20 34L27 38L25 26" fill="currentColor" opacity="0.8"/>
-                  <path d="M15 26L13 38L20 34L27 38L25 26" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-              <div class="education-content">
-                <h3 class="education-degree">VC Merit Award — Spring 2024</h3>
-                <ul class="experience-details">
-                  <li>Recognized for outstanding academic performance.</li>
-                  <li>Placed in the Vice Chancellor's List of Meritorious Students.</li>
-                  <li>Program: B.Sc. in Computer Science & Engineering.</li>
-                  <li>ID: 223002063 — Green University of Bangladesh.</li>
-                  <li>Date of Issue: 19 November 2025.</li>
-                </ul>
-              </div>
-            </article>
-          </li>
-          <li class="education-item">
-            <article class="education-card" aria-label="HackTheAI 2025 Achievement">
-              <div class="education-icon hackathon-badge-icon" aria-hidden="true">
-                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M20 2L35 11V29L20 38L5 29V11L20 2Z" fill="currentColor" opacity="0.12"/>
-                  <path d="M20 2L35 11V29L20 38L5 29V11L20 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="miter"/>
-                  <path d="M12 15V25M12 15L15 18M12 15L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M28 15V25M28 25L25 22M28 25L31 22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M22 12L18 28" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M20 8L22 13L20 15L18 13L20 8Z" fill="currentColor" opacity="0.9"/>
-                  <circle cx="10" cy="20" r="1" fill="currentColor" opacity="0.3"/>
-                  <circle cx="30" cy="20" r="1" fill="currentColor" opacity="0.3"/>
-                  <circle cx="20" cy="32" r="1" fill="currentColor" opacity="0.3"/>
-                </svg>
-              </div>
-              <div class="education-content">
-                <h3 class="education-degree">HackTheAI 2025 — Inter-University Hackathon</h3>
-                <ul class="experience-details">
-                  <li>Ranked 14th out of 242 teams in preliminary round.</li>
-                  <li>Selected in Top 50 teams for onsite finals.</li>
-                  <li>Built an AI-driven solution under mentorship from SmythOS experts.</li>
-                  <li>Team: "Not-a-Bug But-a-Feature."</li>
-                </ul>
-              </div>
-            </article>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Blog -->
-    <section id="blog" class="section reveal" aria-labelledby="blog-title">
-      <div class="container">
-        <h2 id="blog-title">Blog</h2>
-        <p class="muted">Articles and notes I’ve written. Click any card to read on my blog.</p>
-        <div id="blog-grid" class="projects-grid" aria-live="polite">
-          <noscript>
-            <p>Please enable JavaScript to see blog posts.</p>
-          </noscript>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="section reveal" aria-labelledby="contact-title">
-      <div class="container contact-inner">
-        <div class="contact-copy">
-          <h2 id="contact-title">Let's work together</h2>
-          <p>Interested in collaborating or hiring? Send a message or download my CV.</p>
-          <p>Feel free to reach out for collaboration, freelance work, or job opportunities.</p>
-          <div class="contact-email">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+          <p class="hero-highlight">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path
+                d="M10 2C5.58 2 2 5.58 2 10s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 14.5c-3.58 0-6.5-2.92-6.5-6.5S6.42 3.5 10 3.5s6.5 2.92 6.5 6.5-2.92 6.5-6.5 6.5z" />
+              <circle cx="10" cy="10" r="3" fill="currentColor" />
             </svg>
-            <a href="mailto:kawsermiah.cse@gmail.com" aria-label="Email kawsermiah.cse@gmail.com">kawsermiah.cse@gmail.com</a>
+            Mobile App Developer <span aria-hidden="true">•</span> Flutter Specialist
+          </p>
+
+          <p class="hero-role">Mobile Application Developer</p>
+
+          <p class="hero-tagline" id="typewriter-container" aria-live="polite">
+            <span id="typewriter"
+              data-text="I build fast, reliable, and user-friendly mobile apps using Flutter. I focus on clean code, modern UI, scalable architecture, and performance optimization to deliver production-ready mobile applications.">
+            </span>
+          </p>
+          <noscript>
+            <p class="hero-tagline">
+              I build fast, reliable, and user-friendly mobile apps using Flutter. I focus on clean code, modern UI,
+              scalable architecture, and performance optimization to deliver production-ready mobile applications.
+            </p>
+          </noscript>
+
+          <!-- Call to Action Buttons -->
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="#projects" aria-label="View my project portfolio">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
+              </svg>
+              View Projects
+            </a>
+            <a class="btn btn-secondary" href="./assets/resume/Kawser%20Miah%20-%20Resume.pdf"
+              download="Kawser_Miah_Resume.pdf" aria-label="Download resume as PDF" data-analytics="download-cv-hero">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd"
+                  d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
+                  clip-rule="evenodd" />
+              </svg>
+              Download CV
+            </a>
           </div>
-          <div class="contact-actions">
-            <a class="btn btn-primary" href="./assets/resume/Kawser%20Miah%20-%20Resume.pdf" download="Kawser Miah - Resume.pdf" data-analytics="download-cv" aria-label="Download resume PDF">Resume (PDF, ~420 KB)</a>
-            <ul class="social-list" aria-label="Social profiles">
-              <li><a href="https://github.com/Kawser-Miah" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.02c-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.35-1.77-1.35-1.77-1.1-.75.08-.73.08-.73 1.22.09 1.86 1.25 1.86 1.25 1.08 1.85 2.83 1.31 3.52 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.48-1.33-5.48-5.9 0-1.3.47-2.36 1.24-3.19-.13-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.22a11.4 11.4 0 0 1 6 0c2.3-1.54 3.3-1.22 3.3-1.22.66 1.65.25 2.87.12 3.17.77.83 1.24 1.89 1.24 3.19 0 4.58-2.81 5.6-5.49 5.9.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 12 .5Z"/></svg>
-              </a></li>
-              <li><a href="https://www.linkedin.com/in/kawser-miah/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.95v5.66H9.37V9h3.4v1.56h.05c.47-.89 1.63-1.83 3.35-1.83 3.58 0 4.24 2.36 4.24 5.42v6.3ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>
-              </a></li>
-              <li><a href="https://www.facebook.com/md.kawser.ahmed.762580" target="_blank" rel="noopener noreferrer" aria-label="Facebook profile">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-              </a></li>
+
+          <!-- Social Links -->
+          <ul class="social-list" aria-label="Social media profiles">
+            <li>
+              <a href="https://github.com/Kawser-Miah" target="_blank" rel="noopener noreferrer"
+                aria-label="Visit my GitHub profile (opens in new tab)">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path
+                    d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.02c-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.35-1.77-1.35-1.77-1.1-.75.08-.73.08-.73 1.22.09 1.86 1.25 1.86 1.25 1.08 1.85 2.83 1.31 3.52 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.48-1.33-5.48-5.9 0-1.3.47-2.36 1.24-3.19-.13-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.22a11.4 11.4 0 0 1 6 0c2.3-1.54 3.3-1.22 3.3-1.22.66 1.65.25 2.87.12 3.17.77.83 1.24 1.89 1.24 3.19 0 4.58-2.81 5.6-5.49 5.9.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 12 .5Z" />
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/kawser-miah/" target="_blank" rel="noopener noreferrer"
+                aria-label="Visit my LinkedIn profile (opens in new tab)">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path
+                    d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.95v5.66H9.37V9h3.4v1.56h.05c.47-.89 1.63-1.83 3.35-1.83 3.58 0 4.24 2.36 4.24 5.42v6.3ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z" />
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.facebook.com/md.kawser.ahmed.762580" target="_blank" rel="noopener noreferrer"
+                aria-label="Visit my Facebook profile (opens in new tab)">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path
+                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Hero Image -->
+        <div class="hero-visual" id="heroVisual">
+          <img src="./assets/images/headshot.png" alt="Kawser Miah - Mobile Application Developer" width="400"
+            height="400" loading="eager" fetchpriority="high" />
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section reveal" aria-labelledby="about-title">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-photo">
+            <img src="./assets/images/headshot.png" alt="Professional photo of Kawser Miah" width="400" height="400"
+              loading="lazy" />
+          </div>
+          <div class="about-content">
+            <h2 id="about-title">About Me</h2>
+            <p>
+              I'm <strong>Kawser Miah</strong> — a passionate Mobile Application Developer specializing in
+              <strong>Flutter</strong> and modern mobile technologies. I build production-grade apps using Clean
+              Architecture, Flutter Bloc, Firebase, and SQLite.
+            </p>
+            <p>
+              I enjoy creating meaningful products, solving challenging problems, and continuously improving code
+              quality and performance. My goal is to deliver exceptional mobile experiences that users love.
+            </p>
+
+            <h3 class="about-interests-title">What I'm Passionate About</h3>
+            <ul class="about-facts">
+              <li>📱 Mobile App Development with Flutter</li>
+              <li>🎮 Competitive Gaming (PUBG & eSports)</li>
+              <li>✍️ Writing Technical Articles & Tutorials</li>
+              <li>🚀 Exploring New Technologies & Frameworks</li>
+              <li>🏆 Participating in Hackathons & Competitions</li>
             </ul>
           </div>
         </div>
-        <form id="contact-form" class="contact-form" action="https://formspree.io/f/{your-id}" method="POST" novalidate>
-          <div class="form-field">
-            <label for="name">Name</label>
-            <input id="name" name="name" type="text" required autocomplete="name" />
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section reveal" aria-labelledby="education-title">
+      <div class="container">
+        <h2 id="education-title">Education</h2>
+        <ul class="education-list" id="education-list" role="list" aria-label="Educational background">
+          <!-- Dynamically loaded from education.json -->
+          <noscript>
+            <li class="education-card">
+              <p>Please enable JavaScript to view education details.</p>
+            </li>
+          </noscript>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section reveal" aria-labelledby="skills-title">
+      <div class="container">
+        <h2 id="skills-title">Technical Skills</h2>
+        <p class="section-description">Technologies and tools I work with</p>
+        <ul class="skills-grid" id="skills-grid" role="list" aria-label="Technical skills">
+          <!-- Dynamically loaded from skills.json -->
+          <noscript>
+            <li class="skill-badge">
+              <p>Please enable JavaScript to view skills.</p>
+            </li>
+          </noscript>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section reveal" aria-labelledby="experience-title">
+      <div class="container">
+        <h2 id="experience-title">Professional Experience</h2>
+        <ul class="education-list" id="experience-list" role="list" aria-label="Work experience">
+          <!-- Dynamically loaded from experience.json -->
+          <noscript>
+            <li class="education-card">
+              <p>Please enable JavaScript to view experience details.</p>
+            </li>
+          </noscript>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section reveal" aria-labelledby="projects-title">
+      <div class="container">
+        <h2 id="projects-title">Featured Projects</h2>
+        <p class="section-description">A selection of my recent work and personal projects</p>
+        <div id="projects-grid" class="projects-grid" role="list" aria-live="polite" aria-label="Project portfolio">
+          <!-- Dynamically loaded from projects.json -->
+          <noscript>
+            <div class="project-card">
+              <p>Please enable JavaScript to view projects.</p>
+            </div>
+          </noscript>
+        </div>
+      </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="section reveal" aria-labelledby="achievements-title">
+      <div class="container">
+        <h2 id="achievements-title">Achievements & Recognition</h2>
+        <ul class="education-list" role="list" aria-label="Achievements and awards">
+
+          <!-- Vice Chancellor's Merit Award -->
+          <li class="education-item">
+            <article class="education-card" aria-labelledby="achievement-vc-award">
+              <div class="education-icon award-badge-icon" aria-hidden="true">
+                <svg width="48" height="48" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="20" cy="18" r="11" fill="currentColor" opacity="0.15" />
+                  <circle cx="20" cy="18" r="9" stroke="currentColor" stroke-width="2.5" fill="none" />
+                  <circle cx="20" cy="18" r="6.5" stroke="currentColor" stroke-width="1" fill="none" opacity="0.4" />
+                  <path d="M17 18L19 20L23 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" />
+                  <path d="M15 26L13 38L20 34L27 38L25 26" fill="currentColor" opacity="0.8" />
+                  <path d="M15 26L13 38L20 34L27 38L25 26" stroke="currentColor" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+              <div class="education-content">
+                <h3 id="achievement-vc-award" class="education-degree">Vice Chancellor's Merit Award — Spring 2024</h3>
+                <p class="education-date">
+                  <time datetime="2025-11-19">November 19, 2025</time>
+                </p>
+                <ul class="experience-details">
+                  <li>🏆 Recognized for outstanding academic performance</li>
+                  <li>📚 Placed in the Vice Chancellor's List of Meritorious Students</li>
+                  <li>🎓 Program: B.Sc. in Computer Science & Engineering</li>
+                  <li>🏫 Green University of Bangladesh (Student ID: 223002063)</li>
+                </ul>
+              </div>
+            </article>
+          </li>
+
+          <!-- HackTheAI 2025 Achievement -->
+          <li class="education-item">
+            <article class="education-card" aria-labelledby="achievement-hacktheai">
+              <div class="education-icon hackathon-badge-icon" aria-hidden="true">
+                <svg width="48" height="48" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20 2L35 11V29L20 38L5 29V11L20 2Z" fill="currentColor" opacity="0.12" />
+                  <path d="M20 2L35 11V29L20 38L5 29V11L20 2Z" stroke="currentColor" stroke-width="2"
+                    stroke-linejoin="miter" />
+                  <path d="M12 15V25M12 15L15 18M12 15L9 18" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M28 15V25M28 25L25 22M28 25L31 22" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M22 12L18 28" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                  <path d="M20 8L22 13L20 15L18 13L20 8Z" fill="currentColor" opacity="0.9" />
+                  <circle cx="10" cy="20" r="1" fill="currentColor" opacity="0.3" />
+                  <circle cx="30" cy="20" r="1" fill="currentColor" opacity="0.3" />
+                  <circle cx="20" cy="32" r="1" fill="currentColor" opacity="0.3" />
+                </svg>
+              </div>
+              <div class="education-content">
+                <h3 id="achievement-hacktheai" class="education-degree">HackTheAI 2025 — Inter-University Hackathon</h3>
+                <p class="education-date">
+                  <time datetime="2025-09-25">September 25, 2025</time>
+                </p>
+                <ul class="experience-details">
+                  <li>🎯 Ranked 14th out of 242 teams in preliminary round</li>
+                  <li>✨ Selected in Top 50 teams for onsite finals</li>
+                  <li>🤖 Built an AI-driven solution with SmythOS expert mentorship</li>
+                  <li>👥 Team: "Not-a-Bug But-a-Feature"</li>
+                </ul>
+              </div>
+            </article>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="section reveal" aria-labelledby="blog-title">
+      <div class="container">
+        <h2 id="blog-title">Latest Blog Posts</h2>
+        <p class="section-description">Technical articles, tutorials, and insights I've written</p>
+        <div id="blog-grid" class="projects-grid" role="list" aria-live="polite" aria-label="Blog posts">
+          <!-- Dynamically loaded from blog data -->
+          <noscript>
+            <div class="project-card">
+              <p>Please enable JavaScript to view blog posts.</p>
+            </div>
+          </noscript>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section reveal" aria-labelledby="contact-title">
+      <div class="container contact-inner">
+        <!-- Contact Information -->
+        <div class="contact-copy">
+          <h2 id="contact-title">Let's Work Together</h2>
+          <p>
+            Interested in collaborating on a project, hiring me for freelance work, or discussing job opportunities?
+            I'd love to hear from you!
+          </p>
+          <p>
+            Feel free to reach out via email or connect with me on social media. I typically respond within 24-48 hours.
+          </p>
+
+          <!-- Email -->
+          <div class="contact-email">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+            </svg>
+            <a href="mailto:kawsermiah.cse@gmail.com" aria-label="Send email to kawsermiah.cse@gmail.com">
+              kawsermiah.cse@gmail.com
+            </a>
           </div>
-          <div class="form-field">
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" required autocomplete="email" />
+
+          <!-- Actions -->
+          <div class="contact-actions">
+            <a class="btn btn-primary" href="./assets/resume/Kawser%20Miah%20-%20Resume.pdf"
+              download="Kawser_Miah_Resume.pdf" aria-label="Download resume PDF (approximately 420 KB)"
+              data-analytics="download-cv-contact">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd"
+                  d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
+                  clip-rule="evenodd" />
+              </svg>
+              Download Resume
+            </a>
+
+            <!-- Social Links -->
+            <ul class="social-list" aria-label="Social media profiles">
+              <li>
+                <a href="https://github.com/Kawser-Miah" target="_blank" rel="noopener noreferrer"
+                  aria-label="GitHub profile (opens in new tab)">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path
+                      d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.02c-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.35-1.77-1.35-1.77-1.1-.75.08-.73.08-.73 1.22.09 1.86 1.25 1.86 1.25 1.08 1.85 2.83 1.31 3.52 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.48-1.33-5.48-5.9 0-1.3.47-2.36 1.24-3.19-.13-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.22a11.4 11.4 0 0 1 6 0c2.3-1.54 3.3-1.22 3.3-1.22.66 1.65.25 2.87.12 3.17.77.83 1.24 1.89 1.24 3.19 0 4.58-2.81 5.6-5.49 5.9.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 12 .5Z" />
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/kawser-miah/" target="_blank" rel="noopener noreferrer"
+                  aria-label="LinkedIn profile (opens in new tab)">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path
+                      d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.95v5.66H9.37V9h3.4v1.56h.05c.47-.89 1.63-1.83 3.35-1.83 3.58 0 4.24 2.36 4.24 5.42v6.3ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z" />
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/md.kawser.ahmed.762580" target="_blank" rel="noopener noreferrer"
+                  aria-label="Facebook profile (opens in new tab)">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path
+                      d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                  </svg>
+                </a>
+              </li>
+            </ul>
           </div>
+        </div>
+        <!-- Contact Form -->
+        <form id="contact-form" class="contact-form" action="https://formspree.io/f/{your-formspree-id}" method="POST"
+          novalidate>
+
           <div class="form-field">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
+            <label for="contact-name">
+              Name <span aria-label="required">*</span>
+            </label>
+            <input id="contact-name" name="name" type="text" required autocomplete="name" placeholder="Your full name"
+              aria-required="true" />
           </div>
-          <button type="submit" class="btn btn-primary">Send Message</button>
-          <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+
+          <div class="form-field">
+            <label for="contact-email">
+              Email <span aria-label="required">*</span>
+            </label>
+            <input id="contact-email" name="email" type="email" required autocomplete="email"
+              placeholder="your.email@example.com" aria-required="true" />
+          </div>
+
+          <div class="form-field">
+            <label for="contact-message">
+              Message <span aria-label="required">*</span>
+            </label>
+            <textarea id="contact-message" name="message" rows="6" required
+              placeholder="Tell me about your project or opportunity..." aria-required="true"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+            </svg>
+            Send Message
+          </button>
+
+          <p id="form-status" class="form-status" role="status" aria-live="polite" aria-atomic="true"></p>
         </form>
       </div>
     </section>
   </main>
-
-  <!-- Modal: Project details -->
-  <div id="project-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-desc">
-    <div class="modal-overlay" data-close="overlay"></div>
+  <!-- Project Modal -->
+  <div id="project-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title"
+    aria-describedby="modal-desc">
+    <div class="modal-overlay" data-close="overlay" aria-hidden="true"></div>
     <div class="modal-content" role="document">
-      <button class="modal-close" aria-label="Close project details" data-close="button">&times;</button>
+      <button class="modal-close" aria-label="Close project details dialog" data-close="button">
+        <span aria-hidden="true">&times;</span>
+      </button>
       <div class="modal-body">
         <h3 id="modal-title"></h3>
         <p id="modal-desc"></p>
@@ -333,28 +586,56 @@
       </div>
     </div>
   </div>
-
-  <footer class="site-footer">
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
     <div class="container">
-      <p>© 2025 Kawser Miah — Built with ❤️ using HTML, CSS, JavaScript.</p>
-      <ul class="social-list footer-social" aria-label="Social profiles">
-        <li><a href="https://github.com/Kawser-Miah" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.02c-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.35-1.77-1.35-1.77-1.1-.75.08-.73.08-.73 1.22.09 1.86 1.25 1.86 1.25 1.08 1.85 2.83 1.31 3.52 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.48-1.33-5.48-5.9 0-1.3.47-2.36 1.24-3.19-.13-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.22a11.4 11.4 0 0 1 6 0c2.3-1.54 3.3-1.22 3.3-1.22.66 1.65.25 2.87.12 3.17.77.83 1.24 1.89 1.24 3.19 0 4.58-2.81 5.6-5.49 5.9.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 12 .5Z"/></svg>
-        </a></li>
-        <li><a href="https://www.linkedin.com/in/kawser-miah/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.95v5.66H9.37V9h3.4v1.56h.05c.47-.89 1.63-1.83 3.35-1.83 3.58 0 4.24 2.36 4.24 5.42v6.3ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>
-        </a></li>
-        <li><a href="https://www.facebook.com/md.kawser.ahmed.762580" target="_blank" rel="noopener noreferrer" aria-label="Facebook profile">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-        </a></li>
+      <p>
+        © <time datetime="2025">2025</time> <strong>Kawser Miah</strong>.
+        Built with <span aria-label="love">❤️</span> using HTML, CSS, and JavaScript.
+      </p>
+      <!-- Footer Social Links -->
+      <ul class="social-list footer-social" aria-label="Social media links">
+        <li>
+          <a href="https://github.com/Kawser-Miah" target="_blank" rel="noopener noreferrer"
+            aria-label="GitHub (opens in new tab)">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.02c-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.35-1.77-1.35-1.77-1.1-.75.08-.73.08-.73 1.22.09 1.86 1.25 1.86 1.25 1.08 1.85 2.83 1.31 3.52 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.48-1.33-5.48-5.9 0-1.3.47-2.36 1.24-3.19-.13-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.22a11.4 11.4 0 0 1 6 0c2.3-1.54 3.3-1.22 3.3-1.22.66 1.65.25 2.87.12 3.17.77.83 1.24 1.89 1.24 3.19 0 4.58-2.81 5.6-5.49 5.9.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 12 .5Z" />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/kawser-miah/" target="_blank" rel="noopener noreferrer"
+            aria-label="LinkedIn (opens in new tab)">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.95v5.66H9.37V9h3.4v1.56h.05c.47-.89 1.63-1.83 3.35-1.83 3.58 0 4.24 2.36 4.24 5.42v6.3ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z" />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/md.kawser.ahmed.762580" target="_blank" rel="noopener noreferrer"
+            aria-label="Facebook (opens in new tab)">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+            </svg>
+          </a>
+        </li>
       </ul>
-      <nav aria-label="Footer">
-        <a href="./privacy.html" aria-label="Privacy policy">Privacy</a>
-        <a href="#home" id="backToTop" class="back-to-top" aria-label="Back to top">Back to top ↑</a>
+
+      <!-- Footer Navigation -->
+      <nav aria-label="Footer navigation">
+        <a href="./privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">•</span>
+        <a href="#home" id="backToTop" class="back-to-top" aria-label="Scroll back to top">
+          Back to top ↑
+        </a>
       </nav>
     </div>
   </footer>
-
+  <!-- Scripts -->
   <script src="./js/main.js" defer></script>
 </body>
+
 </html>
