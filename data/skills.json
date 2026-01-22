@@ -1,34 +1,34 @@
 [
   {
     "name": "Flutter",
-    "icon": "📱"
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg"
   },
   {
     "name": "Dart",
-    "icon": "🎯"
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg"
   },
   {
     "name": "Kotlin",
-    "icon": "🤖"
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg"
   },
   {
     "name": "Ktor",
-    "icon": "🚀"
+    "icon": "https://cdn.simpleicons.org/ktor/087CFA"
   },
   {
     "name": "Firebase",
-    "icon": "🔥"
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
   },
   {
     "name": "MySQL",
-    "icon": "🗄️"
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
   },
   {
     "name": "Git",
-    "icon": "🔧"
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
   },
   {
     "name": "Python",
-    "icon": "🐍"
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
   }
 ]
