@@ -213,7 +213,7 @@
       const li = document.createElement('li');
       li.className = 'skill-badge';
       li.setAttribute('tabindex', '0');
-      li.innerHTML = `<span aria-hidden="true">${skill.icon}</span> ${skill.name}`;
+      li.innerHTML = `<img src="${skill.icon}" alt="${skill.name} icon" width="24" height="24" aria-hidden="true"> ${skill.name}`;
       skillsGrid.appendChild(li);
     });
     // Skills progressive reveal (after render)
