@@ -1,5 +1,23 @@
 [
   {
+    "id": "finance-tracker",
+    "title": "Finance Tracker — Manage Your Money Effortlessly",
+    "short": "A personal finance management app built with Flutter to track income, expenses, and analytics.",
+    "description": "Finance Tracker is a Flutter-based mobile application that helps users manage their daily finances efficiently. Users can add income and expenses, categorize transactions, view analytics (daily, monthly, yearly), track savings goals, and monitor spending habits through visual charts. The app stores all data locally, ensuring privacy and offline access.",
+    "tech": [
+      "Flutter",
+      "Dart",
+      "Bloc",
+      "Local Database",
+      "SQLite",
+      "Bar Charts",
+      "Clean Architecture"
+    ],
+    "thumbnail": "./assets/images/project-finance_tracker.webp",
+    "live": "https://github.com/Kawser-Miah/finance_tracker/tree/main/Andriod%20APK",
+    "repo": "https://github.com/Kawser-Miah/finance_tracker"
+  },
+  {
     "id": "namidvault",
     "title": "NamidVault — Secure Document Vault App (Client Project)",
     "short": "Secure PDF storage app with expiry tracking, push notifications, and Emergency Access feature.",
