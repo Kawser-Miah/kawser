@@ -1006,6 +1006,10 @@
     display: none;
   }
 
+  .hidden {
+    display: none !important;
+  }
+
   .modal-overlay {
     position: fixed;
     inset: 0;
@@ -1080,6 +1084,43 @@
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
     margin-bottom: var(--space-lg);
+  }
+
+  .modal-features-title {
+    margin: 0 0 var(--space-sm);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .modal-features {
+    list-style: none;
+    margin: 0 0 var(--space-lg);
+    padding: 0;
+    display: grid;
+    gap: var(--space-sm);
+    color: var(--muted);
+  }
+
+  .modal-features li {
+    position: relative;
+    padding: 0.45rem 0.7rem 0.45rem 1.7rem;
+    border: 1px solid color-mix(in srgb, var(--accent) 20%, transparent);
+    border-radius: var(--radius-md);
+    background: color-mix(in srgb, var(--accent) 7%, var(--card));
+  }
+
+  .modal-features li::before {
+    content: '';
+    position: absolute;
+    left: 0.7rem;
+    top: 50%;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 999px;
+    transform: translateY(-50%);
+    background: var(--accent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
   }
 
   .modal-links {
