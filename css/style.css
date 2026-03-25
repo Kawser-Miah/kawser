@@ -1079,7 +1079,7 @@
   .modal-media img {
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
-    margin-top: var(--space-lg);
+    margin-bottom: var(--space-lg);
   }
 
   .modal-links {
