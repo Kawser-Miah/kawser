@@ -68,6 +68,28 @@
     "repo": ""
   },
   {
+    "id": "secure-file-vault",
+    "title": "Secure File Vault — Encrypted Document Storage",
+    "short": "A secure Flutter app for encrypted file storage using custom Snake Matrix XOR encryption.",
+    "description": "Secure File Vault is a robust cross-platform Flutter application designed to provide highly secure document storage through a custom-built Snake Matrix XOR Encryption algorithm. The app ensures end-to-end data protection by encrypting files locally on the device before uploading them to the cloud.\n\nThe system follows a hybrid security approach where each file is encrypted using a randomly generated 27-digit key through the Snake Matrix XOR method. This session key is further secured using RSA encryption, adding an additional layer of protection. Before upload, encrypted data is compressed using ZLib to optimize storage and network performance.\n\nThe application integrates Firebase services, including Authentication (Google Sign-In), Firestore for storing structured metadata (such as file name, type, and notes), and Firebase Storage for securely storing encrypted files. Sensitive information like private keys is securely managed using Flutter SecureStorage, while lightweight user data is handled via SharedPreferences.\n\nTo maintain a smooth and responsive user experience, computationally intensive encryption and decryption processes are handled using Flutter Isolates, ensuring that the UI remains fast and non-blocking.\n\nKey features of the app include secure file upload and retrieval, support for multiple file formats (such as PDF and images), metadata management, and a fully private storage system where no raw file is ever stored unencrypted. The project is designed with a clean and scalable architecture, making it easy to extend with future enhancements like AES-based encryption, multi-device synchronization, and advanced access control.\n\nThis project demonstrates strong knowledge of Flutter development, cryptography fundamentals, secure data handling, and performance optimization techniques, making it suitable for real-world secure storage solutions as well as educational purposes.",
+    "tech": [
+      "Flutter",
+      "Dart",
+      "Firebase Authentication",
+      "Firebase Firestore",
+      "Firebase Storage",
+      "PointyCastle",
+      "RSA Encryption",
+      "ZLib Compression",
+      "Flutter SecureStorage",
+      "SharedPreferences",
+      "Flutter Isolate"
+    ],
+    "thumbnail": "./assets/images/project-secure_file_vault.webp",
+    "live": "",
+    "repo": ""
+  },
+  {
     "id": "cardiocareai",
     "title": "CardioCare AI — Heart Disease Prediction App",
     "short": "AI-based heart disease risk prediction app with mobile frontend and backend.",
