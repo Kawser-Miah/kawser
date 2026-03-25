@@ -4,6 +4,11 @@
     "title": "Finance Tracker — Manage Your Money Effortlessly",
     "short": "A personal finance management app built with Flutter to track income, expenses, and analytics.",
     "description": "Finance Tracker is a Flutter-based mobile application that helps users manage their daily finances efficiently. Users can add income and expenses, categorize transactions, view analytics (daily, monthly, yearly), track savings goals, and monitor spending habits through visual charts. The app stores all data locally, ensuring privacy and offline access.",
+    "features": [
+      "Track income and expenses with flexible category management.",
+      "Visualize daily, monthly, and yearly analytics with charts.",
+      "Set savings goals and monitor spending habits offline."
+    ],
     "tech": [
       "Flutter",
       "Dart",
@@ -22,6 +27,7 @@
     "title": "NamidVault — Secure Document Vault App (Client Project)",
     "short": "Secure PDF storage app with expiry tracking, push notifications, and Emergency Access feature.",
     "description": "Client Project: Built a secure PDF storage and document vault application. Implemented expiry date tracking with push notifications, Emergency Access feature for urgent retrieval, and developed a clean, modern UI from scratch. Integrated Firebase Auth and Firestore with strong structural design. Delivered bug-free final product using Clean Architecture and GetIt DI.",
+    "features": null,
     "tech": [
       "Flutter",
       "Dart",
@@ -39,6 +45,11 @@
     "title": "DeenHub App (Group Project)",
     "short": "All-in-one Islamic app with 35k+ Hadith, prayer times, daily duas, Tasbih counter, Hijri calendar, and 99 Names of Allah.",
     "description": "Group Project (January 2025 - March 2025): DeenHub is an all-in-one Islamic app offering 35,000+ Hadith, location-based prayer times, daily duas, a Tasbih counter, Hijri calendar, and more. Users can bookmark Hadiths, track dhikr, and explore the 99 Names of Allah to enhance their spiritual journey. Available on Google Play Store. Developed key features: Hadith collection, 6 Dhikr Tasbih counter, and location-based prayer times. Implemented Clean Architecture and used Flutter Bloc for state management. Integrated GetIt for dependency injection, improving maintainability and scalability. Used SQLite (Floor package) for local data storage and optimized database queries. Implemented SharedPreferences to store Tasbih progress and last location for prayer times. Managed HUAWEI AppGallery & Amazon Appstore, handling compliance, updates, and app maintenance.",
+    "features": [
+      "Browse 35,000+ Hadith with bookmarking support.",
+      "Access prayer times based on user location.",
+      "Use Tasbih counter, Hijri calendar, and daily duas in one app."
+    ],
     "tech": [
       "Flutter",
       "Dart",
@@ -57,6 +68,11 @@
     "title": "English Booster",
     "short": "Vocabulary learning app with swipe cards, spaced repetition, and progress tracking.",
     "description": "Vocabulary learning app with swipe cards, spaced repetition, and progress tracking. Uses SQLite for offline data and Flutter Bloc for scalable state management.",
+    "features": [
+      "Practice words with swipe-based flashcards.",
+      "Improve retention using spaced repetition.",
+      "Track learning progress with offline-first storage."
+    ],
     "tech": [
       "Flutter",
       "Dart",
@@ -71,7 +87,19 @@
     "id": "secure-file-vault",
     "title": "Secure File Vault — Encrypted Document Storage",
     "short": "A secure Flutter app for encrypted file storage using custom Snake Matrix XOR encryption.",
-    "description": "Secure File Vault is a robust cross-platform Flutter application designed to provide highly secure document storage through a custom-built Snake Matrix XOR Encryption algorithm. The app ensures end-to-end data protection by encrypting files locally on the device before uploading them to the cloud.\n\nThe system follows a hybrid security approach where each file is encrypted using a randomly generated 27-digit key through the Snake Matrix XOR method. This session key is further secured using RSA encryption, adding an additional layer of protection. Before upload, encrypted data is compressed using ZLib to optimize storage and network performance.\n\nThe application integrates Firebase services, including Authentication (Google Sign-In), Firestore for storing structured metadata (such as file name, type, and notes), and Firebase Storage for securely storing encrypted files. Sensitive information like private keys is securely managed using Flutter SecureStorage, while lightweight user data is handled via SharedPreferences.\n\nTo maintain a smooth and responsive user experience, computationally intensive encryption and decryption processes are handled using Flutter Isolates, ensuring that the UI remains fast and non-blocking.\n\nKey features of the app include secure file upload and retrieval, support for multiple file formats (such as PDF and images), metadata management, and a fully private storage system where no raw file is ever stored unencrypted. The project is designed with a clean and scalable architecture, making it easy to extend with future enhancements like AES-based encryption, multi-device synchronization, and advanced access control.\n\nThis project demonstrates strong knowledge of Flutter development, cryptography fundamentals, secure data handling, and performance optimization techniques, making it suitable for real-world secure storage solutions as well as educational purposes.",
+    "description": "Secure File Vault is a Flutter-based application designed for secure document storage with end-to-end encryption. Files are encrypted locally using a custom Snake Matrix XOR algorithm with a randomly generated key, which is further secured using RSA encryption. The app integrates Firebase for authentication, storage, and metadata management, while ensuring all files remain encrypted before upload. ZLib compression is used to optimize performance, and Flutter Isolates handle heavy processing to keep the UI smooth. The project focuses on privacy, performance, and scalable architecture.",
+    "features": [
+      "End-to-end file encryption before upload",
+      "Custom Snake Matrix XOR encryption algorithm",
+      "RSA-based secure key encryption",
+      "Firebase Authentication (Google Sign-In)",
+      "Secure file storage with Firebase Storage",
+      "Metadata management using Firestore",
+      "ZLib compression for optimized performance",
+      "Secure key storage using Flutter SecureStorage",
+      "Support for multiple file types (PDF, images, etc.)",
+      "Smooth performance using Flutter Isolates"
+    ],
     "tech": [
       "Flutter",
       "Dart",
@@ -94,6 +122,11 @@
     "title": "CardioCare AI — Heart Disease Prediction App",
     "short": "AI-based heart disease risk prediction app with mobile frontend and backend.",
     "description": "Developed a full-stack AI-based heart disease prediction system. Built a Flutter mobile application connected to a FastAPI backend and a Random Forest machine learning model. The system provides probability-based risk prediction, explainable factors, assessment history, and a clean user-friendly interface. Implemented proper architecture, API integration, and reliable model evaluation.",
+    "features": [
+      "Predict heart disease risk with probability-based output.",
+      "Connect Flutter app to a FastAPI inference backend.",
+      "Show explainable factors and maintain assessment history."
+    ],
     "tech": [
       "Flutter",
       "Dart",
@@ -112,6 +145,11 @@
     "title": "Flutter News App",
     "short": "A fully functional news application with REST API, Firebase Auth, SQLite offline storage, and Clean Architecture.",
     "description": "Project (January 2024 - March 2024): A fully functional news application developed using Flutter, integrating a REST API, Firebase Authentication, SQLite offline storage, Flutter Bloc, and Clean Architecture for maintainable and scalable code. Features include: Real-Time News Feed fetching articles from a RESTful API, Firebase Authentication for secure login, Offline Support with SQLite (automatically saves fetched news articles and displays them when offline), State Management using Flutter Bloc for predictable state handling, Clean Architecture with domain, data, and presentation layers for scalable and testable codebase, and Dark Mode Support with seamless theme switching.",
+    "features": [
+      "Fetch and display real-time news from a REST API.",
+      "Provide secure login with Firebase Authentication.",
+      "Support offline reading with SQLite article caching."
+    ],
     "tech": [
       "Flutter",
       "Dart",
