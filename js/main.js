@@ -320,12 +320,30 @@
     lastFocused = invoker || document.activeElement;
     const title = modal.querySelector('#modal-title');
     const desc = modal.querySelector('#modal-desc');
+    const featuresTitle = modal.querySelector('.modal-features-title');
+    const features = modal.querySelector('.modal-features');
     const tech = modal.querySelector('.modal-tech');
     const media = modal.querySelector('.modal-media');
     const links = modal.querySelector('.modal-links');
 
     title.textContent = project.title;
     desc.textContent = project.description;
+    const featurePoints = Array.isArray(project.features)
+      ? project.features
+          .map(point => (typeof point === 'string' ? point.trim() : ''))
+          .filter(point => point.length > 0)
+      : [];
+    const hasFeatures = featurePoints.length > 0;
+
+    if (featuresTitle) {
+      featuresTitle.classList.toggle('hidden', !hasFeatures);
+    }
+    if (features) {
+      features.classList.toggle('hidden', !hasFeatures);
+      features.innerHTML = hasFeatures
+        ? featurePoints.map(point => `<li>${point}</li>`).join('')
+        : '';
+    }
     tech.innerHTML = project.tech.map(t => `<span class="tag">${t}</span>`).join('');
     media.innerHTML = `<img src="${project.thumbnail}" alt="Screenshot of ${project.title}" loading="lazy">`;
     links.innerHTML = `${project.live ? `<a class='btn btn-secondary' href='${project.live}' target='_blank' rel='noopener noreferrer'>Live Demo</a>` : ''}
