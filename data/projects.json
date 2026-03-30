@@ -1,5 +1,36 @@
 [
   {
+    "id": "ai-smart-farming-assistant",
+    "title": "AI-Powered Smart Farming Assistant (Group Project)",
+    "short": "An AI-based smart farming app with disease detection, crop recommendation, and predictive analytics using machine learning.",
+    "description": "AI-Powered Smart Farming Assistant is a Flutter-based cross-platform application designed to help farmers make data-driven decisions using Artificial Intelligence and Machine Learning. The app provides crop disease detection using CNN, smart irrigation, fertilizer recommendation, crop recommendation, yield estimation, and market price forecasting through ML models. It integrates external APIs for real-time weather insights and uses Supabase for authentication and cloud data management. The system follows Clean Architecture principles, ensuring scalability, maintainability, and modular development. Additionally, an AI chatbot offers real-time assistance to farmers. This is a collaborative group project and is currently 90% completed.",
+    "features": [
+      "Crop disease detection using CNN and image processing.",
+      "Smart irrigation system powered by machine learning.",
+      "Fertilizer recommendation based on soil nutrients (N, P, K, pH).",
+      "Crop recommendation system using classification models.",
+      "Crop yield estimation using regression models.",
+      "Market price forecasting using machine learning.",
+      "Real-time weather forecasting using external APIs.",
+      "AI chatbot for real-time farming assistance.",
+      "Secure authentication and cloud database using Supabase.",
+      "Scalable and modular design using Clean Architecture."
+    ],
+    "tech": [
+      "Flutter",
+      "Dart",
+      "Python",
+      "FastAPI",
+      "TensorFlow",
+      "Supabase",
+      "REST API",
+      "Machine Learning"
+    ],
+    "thumbnail": "./assets/images/project-smart_farming.webp",
+    "live": "",
+    "repo": "https://github.com/Nadia-Islam-Rupa/farmer_assistance"
+  },
+  {
     "id": "finance-tracker",
     "title": "Finance Tracker — Manage Your Money Effortlessly",
     "short": "A personal finance management app built with Flutter to track income, expenses, and analytics.",
@@ -117,7 +148,6 @@
     "live": "",
     "repo": ""
   },
-  
   {
     "id": "flutter-news-app",
     "title": "Flutter News App",
