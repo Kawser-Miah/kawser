@@ -73,7 +73,7 @@
   },
   {
     "id": "deenhub",
-    "title": "DeenHub App (Group Project)",
+    "title": "DeenHub App",
     "short": "All-in-one Islamic app with 35k+ Hadith, prayer times, daily duas, Tasbih counter, Hijri calendar, and 99 Names of Allah.",
     "description": "Group Project (January 2025 - March 2025): DeenHub is an all-in-one Islamic app offering 35,000+ Hadith, location-based prayer times, daily duas, a Tasbih counter, Hijri calendar, and more. Users can bookmark Hadiths, track dhikr, and explore the 99 Names of Allah to enhance their spiritual journey. Available on Google Play Store. Developed key features: Hadith collection, 6 Dhikr Tasbih counter, and location-based prayer times. Implemented Clean Architecture and used Flutter Bloc for state management. Integrated GetIt for dependency injection, improving maintainability and scalability. Used SQLite (Floor package) for local data storage and optimized database queries. Implemented SharedPreferences to store Tasbih progress and last location for prayer times. Managed HUAWEI AppGallery & Amazon Appstore, handling compliance, updates, and app maintenance.",
     "features": [
