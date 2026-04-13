@@ -18,12 +18,22 @@
   const navToggle = document.querySelector('.nav-toggle');
   const navLinksAll = document.querySelectorAll('.nav-list .nav-link');
 
+  // Scroll progress bar
+  const scrollProgress = document.getElementById('scroll-progress');
+  const updateScrollProgress = () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    if (scrollProgress) scrollProgress.style.width = pct + '%';
+  };
+
   // Sticky header shadow toggle
   const onScroll = () => {
     if (window.scrollY > 8) header.classList.add('is-sticky'); else header.classList.remove('is-sticky');
     if (backToTop) {
       if (window.scrollY > 600) backToTop.classList.add('visible'); else backToTop.classList.remove('visible');
     }
+    updateScrollProgress();
   };
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
@@ -147,6 +157,8 @@
         : `<span class='tag' aria-hidden="true">Technology: N/A</span>`;
       const techList = p.tech && p.tech.length > 0 ? p.tech.join(', ') : 'N/A';
       
+      const iconExternalLink = `<svg width="13" height="13" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg>`;
+      const iconGitHub = `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.02c-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.35-1.77-1.35-1.77-1.1-.75.08-.73.08-.73 1.22.09 1.86 1.25 1.86 1.25 1.08 1.85 2.83 1.31 3.52 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.48-1.33-5.48-5.9 0-1.3.47-2.36 1.24-3.19-.13-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.22a11.4 11.4 0 0 1 6 0c2.3-1.54 3.3-1.22 3.3-1.22.66 1.65.25 2.87.12 3.17.77.83 1.24 1.89 1.24 3.19 0 4.58-2.81 5.6-5.49 5.9.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 12 .5Z"/></svg>`;
       card.innerHTML = `
         <div class="project-media"><img src="${p.thumbnail}" alt="Thumbnail for ${p.title}" loading="lazy"></div>
         <div class="project-body">
@@ -156,12 +168,13 @@
             <span class="sr-only">Technologies used: ${techList}</span>
             ${techBadges}
           </div>
-          <div class="project-actions">
-            ${p.live ? `<a class="btn btn-secondary" href="${p.live}" target="_blank" rel="noopener noreferrer">Live Demo</a>` : ''}
-            ${p.repo ? `<a class="btn btn-primary" href="${p.repo}" target="_blank" rel="noopener noreferrer">Source Code</a>` : ''}
-          </div>
+        </div>
+        <div class="project-actions">
+          ${p.live ? `<a class="project-action-btn project-action-demo" href="${p.live}" target="_blank" rel="noopener noreferrer">${iconExternalLink} Live Demo</a>` : ''}
+          ${p.repo ? `<a class="project-action-btn project-action-repo" href="${p.repo}" target="_blank" rel="noopener noreferrer">${iconGitHub} Source Code</a>` : ''}
         </div>`;
-      card.addEventListener('click', () => openModal(p, card));
+      // Only open modal when clicking card body — not the action buttons
+      card.addEventListener('click', (e) => { if (!e.target.closest('a')) openModal(p, card); });
       card.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(p, card); } });
       projectsGrid.appendChild(card);
     });
@@ -328,26 +341,27 @@
 
     title.textContent = project.title;
     desc.textContent = project.description;
+
     const featurePoints = Array.isArray(project.features)
-      ? project.features
-          .map(point => (typeof point === 'string' ? point.trim() : ''))
-          .filter(point => point.length > 0)
+      ? project.features.map(p => (typeof p === 'string' ? p.trim() : '')).filter(p => p.length > 0)
       : [];
     const hasFeatures = featurePoints.length > 0;
-
-    if (featuresTitle) {
-      featuresTitle.classList.toggle('hidden', !hasFeatures);
-    }
+    if (featuresTitle) featuresTitle.classList.toggle('hidden', !hasFeatures);
     if (features) {
       features.classList.toggle('hidden', !hasFeatures);
-      features.innerHTML = hasFeatures
-        ? featurePoints.map(point => `<li>${point}</li>`).join('')
-        : '';
+      features.innerHTML = hasFeatures ? featurePoints.map(p => `<li>${p}</li>`).join('') : '';
     }
+
     tech.innerHTML = project.tech.map(t => `<span class="tag">${t}</span>`).join('');
+    // Banner image
     media.innerHTML = `<img src="${project.thumbnail}" alt="Screenshot of ${project.title}" loading="lazy">`;
-    links.innerHTML = `${project.live ? `<a class='btn btn-secondary' href='${project.live}' target='_blank' rel='noopener noreferrer'>Live Demo</a>` : ''}
-                      ${project.repo ? `<a class='btn btn-primary' href='${project.repo}' target='_blank' rel='noopener noreferrer'>Source Code</a>` : ''}`;
+
+    // Sidebar link buttons with icons
+    const iconExternal = `<svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"/></svg>`;
+    const iconGH = `<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.02c-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.35-1.77-1.35-1.77-1.1-.75.08-.73.08-.73 1.22.09 1.86 1.25 1.86 1.25 1.08 1.85 2.83 1.31 3.52 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.48-1.33-5.48-5.9 0-1.3.47-2.36 1.24-3.19-.13-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.22a11.4 11.4 0 0 1 6 0c2.3-1.54 3.3-1.22 3.3-1.22.66 1.65.25 2.87.12 3.17.77.83 1.24 1.89 1.24 3.19 0 4.58-2.81 5.6-5.49 5.9.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 12 .5Z"/></svg>`;
+    links.innerHTML = `
+      ${project.live ? `<a class="modal-link-btn modal-link-demo" href="${project.live}" target="_blank" rel="noopener noreferrer">${iconExternal} Live Demo</a>` : ''}
+      ${project.repo ? `<a class="modal-link-btn modal-link-repo" href="${project.repo}" target="_blank" rel="noopener noreferrer">${iconGH} Source Code</a>` : ''}`;
 
     modal.classList.remove('hidden');
     requestAnimationFrame(() => modal.classList.add('open'));
