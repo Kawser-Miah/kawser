@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- TODO: Update canonical domain if different -->
   <url>
-    <loc>https://kawser.dev/</loc>
-    <lastmod>2025-11-12</lastmod>
+    <loc>https://kawser.me/</loc>
+    <lastmod>2026-04-14</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://kawser.me/privacy.html</loc>
+    <lastmod>2026-04-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>

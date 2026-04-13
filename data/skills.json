@@ -12,23 +12,51 @@
     "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg"
   },
   {
-    "name": "Ktor",
-    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ktor/ktor-original.svg"
+    "name": "Android",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg"
   },
   {
     "name": "Firebase",
     "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
   },
   {
+    "name": "SQLite",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg"
+  },
+  {
     "name": "MySQL",
     "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
+  },
+  {
+    "name": "Python",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+  },
+  {
+    "name": "REST API",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg"
   },
   {
     "name": "Git",
     "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
   },
   {
-    "name": "Python",
-    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+    "name": "GitHub",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+  },
+  {
+    "name": "VS Code",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
+  },
+  {
+    "name": "Android Studio",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/androidstudio/androidstudio-original.svg"
+  },
+  {
+    "name": "Machine Learning",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg"
+  },
+  {
+    "name": "Postman",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg"
   }
 ]

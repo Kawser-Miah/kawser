@@ -1,6 +1,6 @@
-# robots.txt for Kawser Ahmed Portfolio
+# robots.txt for Kawser Miah Portfolio
 User-agent: *
 Allow: /
+Disallow: /assets/resume/
 
-# TODO: Update domain if needed
-Sitemap: https://kawser.dev/sitemap.xml
+Sitemap: https://kawser.me/sitemap.xml
