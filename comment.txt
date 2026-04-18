@@ -1,0 +1,23 @@
+// {
+  //   "id": "cardiocareai",
+  //   "title": "CardioCare AI — Heart Disease Prediction App",
+  //   "short": "AI-based heart disease risk prediction app with mobile frontend and backend.",
+  //   "description": "Developed a full-stack AI-based heart disease prediction system. Built a Flutter mobile application connected to a FastAPI backend and a Random Forest machine learning model. The system provides probability-based risk prediction, explainable factors, assessment history, and a clean user-friendly interface. Implemented proper architecture, API integration, and reliable model evaluation.",
+  //   "features": [
+  //     "Predict heart disease risk with probability-based output.",
+  //     "Connect Flutter app to a FastAPI inference backend.",
+  //     "Show explainable factors and maintain assessment history."
+  //   ],
+  //   "tech": [
+  //     "Flutter",
+  //     "Dart",
+  //     "FastAPI",
+  //     "Python",
+  //     "Machine Learning",
+  //     "Scikit-learn",
+  //     "Firebase"
+  //   ],
+  //   "thumbnail": "./assets/images/project-cardiocareai.webp",
+  //   "live": "",
+  //   "repo": "https://github.com/Kawser-Miah/heart_disease_prediction"
+  # },
