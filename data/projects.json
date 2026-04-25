@@ -1,5 +1,44 @@
 [
   {
+    "id": "farmer-assistance-backend",
+    "title": "Farmer Assistance Backend",
+    "short": "A FastAPI backend for smart farming with crop disease detection, AI chat, irrigation prediction, and market price forecasting using ML models.",
+    "description": "Farmer Assistance Backend is a modular FastAPI server designed for a Flutter/mobile client that empowers farmers with AI and machine learning tools. It provides crop disease detection from image uploads using a TensorFlow CNN model with Grad-CAM heatmap visualization, an AI farming chatbot powered by RAG (Retrieval-Augmented Generation) using Gemini and sentence-transformers, smart irrigation prediction, fertilizer recommendation, crop recommendation, crop yield estimation, and commodity price prediction. Authentication is handled via Supabase JWT, and all data is stored and retrieved through Supabase database and storage. Each prediction domain follows a clean modular architecture with dedicated routers, schemas, and services.",
+    "features": [
+      "Crop disease detection from image uploads using TensorFlow CNN with Grad-CAM heatmap visualization.",
+      "AI farming chatbot with RAG pipeline using Gemini (gemini-2.5-flash) and sentence-transformers.",
+      "Persistent multi-turn conversation system with auto-generated titles and Q&A pairing.",
+      "Smart irrigation prediction based on crop, soil type, growth stage, moisture, temperature, and humidity.",
+      "Fertilizer recommendation based on crop, soil color, and soil nutrients (N, P, K, pH, rainfall).",
+      "Crop recommendation using classification model with soil and climate inputs.",
+      "Crop yield estimation using regression model with area, rainfall, temperature, and pesticide data.",
+      "Commodity price prediction using XGBoost with location, market, and seasonal features.",
+      "Secure JWT-based authentication via Supabase with JWKS validation.",
+      "Modular Clean Architecture with lazy-loaded ML model assets and Supabase storage integration."
+    ],
+    "tech": [
+      "Python",
+      "FastAPI",
+      "TensorFlow",
+      "scikit-learn",
+      "XGBoost",
+      "CNN",
+      "Random Forest",
+      "Decision Tree",
+      "OpenCV",
+      "Supabase",
+      "Google Gemini",
+      "sentence-transformers",
+      "Uvicorn",
+      "Pydantic",
+      "REST API",
+      "Machine Learning"
+    ],
+    "thumbnail": "./assets/images/project-farmer-assistance.webp",
+    "live": "",
+    "repo": "https://github.com/Kawser-Miah/farmer_assistance_api"
+  },
+  {
     "id": "ai-smart-farming-assistant",
     "title": "AI-Powered Smart Farming Assistant (Group Project)",
     "short": "An AI-based smart farming app with disease detection, crop recommendation, and predictive analytics using machine learning.",
