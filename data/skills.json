@@ -12,12 +12,16 @@
     "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg"
   },
   {
-    "name": "Android",
-    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg"
+    "name": "FastAPI",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg"
   },
   {
     "name": "Firebase",
     "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
+  },
+  {
+    "name": "Supabase",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg"
   },
   {
     "name": "SQLite",
@@ -32,8 +36,8 @@
     "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
   },
   {
-    "name": "REST API",
-    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg"
+    "name": "RESTful API",
+    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swagger/swagger-original.svg"
   },
   {
     "name": "Git",
