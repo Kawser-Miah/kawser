@@ -409,59 +409,18 @@
     if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
   }
 
-  // Contact form submit -> Firestore
+  // Contact form: no backend wired up — direct visitors to email instead.
   const form = document.getElementById('contact-form');
   if (form) {
-    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    form.addEventListener('submit', async (e) => {
+    const CONTACT_EMAIL = 'kawsermiah.cse@gmail.com';
+    form.addEventListener('submit', (e) => {
       e.preventDefault();
       const status = document.getElementById('form-status');
-      const submitBtn = form.querySelector('button[type="submit"]');
-      const name = (form.querySelector('#contact-name')?.value || '').trim();
-      const email = (form.querySelector('#contact-email')?.value || '').trim();
-      const message = (form.querySelector('#contact-message')?.value || '').trim();
-
-      if (!name || !email || !message) {
-        status.style.color = '#b91c1c';
-        status.textContent = 'Please fill in name, email, and message.';
-        return;
-      }
-      if (!EMAIL_RE.test(email)) {
-        status.style.color = '#b91c1c';
-        status.textContent = 'Please enter a valid email address.';
-        return;
-      }
-      if (name.length > 120 || email.length > 200 || message.length > 4000) {
-        status.style.color = '#b91c1c';
-        status.textContent = 'Input is too long. Please shorten and try again.';
-        return;
-      }
-      if (typeof window.saveContactMessage !== 'function') {
-        status.style.color = '#b91c1c';
-        status.textContent = 'Form is still loading. Please try again in a moment.';
-        return;
-      }
-
-      if (submitBtn) submitBtn.disabled = true;
+      if (!status) return;
       status.style.color = '';
-      status.textContent = 'Sending...';
-      try {
-        await window.saveContactMessage({ name, email, message });
-        status.style.color = '';
-        status.textContent = 'Thanks! Your message has been sent.';
-        form.reset();
-        if (typeof window.trackEvent === 'function') {
-          window.trackEvent('contact_submit_success');
-        }
-      } catch (err) {
-        console.error('Contact form Firestore write failed:', err);
-        status.style.color = '#b91c1c';
-        status.textContent = 'Could not send right now. Please email me directly at mafujuls@gmail.com.';
-        if (typeof window.trackEvent === 'function') {
-          window.trackEvent('contact_submit_error', { code: err?.code || 'unknown' });
-        }
-      } finally {
-        if (submitBtn) submitBtn.disabled = false;
+      status.innerHTML = `Please send your message directly to <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>.`;
+      if (typeof window.trackEvent === 'function') {
+        window.trackEvent('contact_submit_redirect');
       }
     });
   }
