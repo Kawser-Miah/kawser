@@ -409,43 +409,18 @@
     if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
   }
 
-  // Contact form submit
+  // Contact form: no backend wired up — direct visitors to email instead.
   const form = document.getElementById('contact-form');
   if (form) {
-    form.addEventListener('submit', async (e) => {
+    const CONTACT_EMAIL = 'kawsermiah.cse@gmail.com';
+    form.addEventListener('submit', (e) => {
       e.preventDefault();
       const status = document.getElementById('form-status');
-      // Detect placeholder Formspree ID
-      if (form.action.includes('{your-id}')) {
-        status.textContent = 'Form not configured. Please replace the Formspree ID in the form action.';
-        status.style.color = '#b91c1c'; // red-700
-        return;
-      }
+      if (!status) return;
       status.style.color = '';
-      status.textContent = 'Sending...';
-      const data = new FormData(form);
-      try {
-        const res = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
-        if (res.ok) {
-          status.textContent = 'Thanks! Your message has been sent.';
-          form.reset();
-        } else {
-          // Try to parse JSON error if provided by Formspree
-          try {
-            const payload = await res.json();
-            if (payload && payload.errors && payload.errors.length) {
-              status.textContent = payload.errors.map(err => err.message).join(' ');
-            } else {
-              status.textContent = 'Oops, there was an error. Please try again later.';
-            }
-          } catch (_) {
-            status.textContent = 'Oops, there was an error. Please try again later.';
-          }
-          status.style.color = '#b91c1c';
-        }
-      } catch (err) {
-        status.textContent = 'Network error. If running locally, start a server (e.g., “npx http-server .”) and try again.';
-        status.style.color = '#b91c1c';
+      status.innerHTML = `Please send your message directly to <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>.`;
+      if (typeof window.trackEvent === 'function') {
+        window.trackEvent('contact_submit_redirect');
       }
     });
   }

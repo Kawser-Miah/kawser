@@ -160,17 +160,32 @@
     }
   </script>
 
-  <!-- Google Analytics (gtag.js) -->
-  <!-- IMPORTANT: Replace G-XXXXXXX with your real Google Analytics Measurement ID -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXX', {
-      'anonymize_ip': true,
-      'cookie_flags': 'SameSite=None;Secure'
-    });
+  <!-- Firebase Analytics (loaded as ES module from gstatic CDN) -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+    import { getAnalytics, logEvent, setAnalyticsCollectionEnabled } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-analytics.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBEaLTLFh2KreyJLrRy_qKltEyHvZG5Y1g",
+      authDomain: "my-portfolio-1f2e6.firebaseapp.com",
+      projectId: "my-portfolio-1f2e6",
+      storageBucket: "my-portfolio-1f2e6.firebasestorage.app",
+      messagingSenderId: "632726854113",
+      appId: "1:632726854113:web:36b15b7c0f3f1214485aa0",
+      measurementId: "G-CSDSPWMJ10"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+
+    // Respect Do Not Track
+    if (navigator.doNotTrack === "1" || window.doNotTrack === "1") {
+      setAnalyticsCollectionEnabled(analytics, false);
+    }
+
+    // Expose a small helper for analytics.js (non-module script)
+    window.trackEvent = (name, params) => logEvent(analytics, name, params || {});
+    window.dispatchEvent(new CustomEvent('firebase-analytics-ready'));
   </script>
 </head>
 
@@ -587,10 +602,8 @@
             </ul>
           </div>
         </div>
-        <!-- Contact Form -->
-        <!-- IMPORTANT: Replace {your-formspree-id} with your real Formspree form ID -->
-        <form id="contact-form" class="contact-form" action="https://formspree.io/f/{your-formspree-id}" method="POST"
-          novalidate>
+        <!-- Contact Form (writes to Firestore via window.saveContactMessage) -->
+        <form id="contact-form" class="contact-form" novalidate>
 
           <div class="form-field">
             <label for="contact-name">
@@ -726,6 +739,7 @@
   </footer>
   <!-- Scripts -->
   <script src="./js/main.js" defer></script>
+  <script src="./js/analytics.js" defer></script>
 </body>
 
 </html>
