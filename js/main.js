@@ -409,43 +409,59 @@
     if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
   }
 
-  // Contact form submit
+  // Contact form submit -> Firestore
   const form = document.getElementById('contact-form');
   if (form) {
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const status = document.getElementById('form-status');
-      // Detect placeholder Formspree ID
-      if (form.action.includes('{your-id}')) {
-        status.textContent = 'Form not configured. Please replace the Formspree ID in the form action.';
-        status.style.color = '#b91c1c'; // red-700
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const name = (form.querySelector('#contact-name')?.value || '').trim();
+      const email = (form.querySelector('#contact-email')?.value || '').trim();
+      const message = (form.querySelector('#contact-message')?.value || '').trim();
+
+      if (!name || !email || !message) {
+        status.style.color = '#b91c1c';
+        status.textContent = 'Please fill in name, email, and message.';
         return;
       }
+      if (!EMAIL_RE.test(email)) {
+        status.style.color = '#b91c1c';
+        status.textContent = 'Please enter a valid email address.';
+        return;
+      }
+      if (name.length > 120 || email.length > 200 || message.length > 4000) {
+        status.style.color = '#b91c1c';
+        status.textContent = 'Input is too long. Please shorten and try again.';
+        return;
+      }
+      if (typeof window.saveContactMessage !== 'function') {
+        status.style.color = '#b91c1c';
+        status.textContent = 'Form is still loading. Please try again in a moment.';
+        return;
+      }
+
+      if (submitBtn) submitBtn.disabled = true;
       status.style.color = '';
       status.textContent = 'Sending...';
-      const data = new FormData(form);
       try {
-        const res = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
-        if (res.ok) {
-          status.textContent = 'Thanks! Your message has been sent.';
-          form.reset();
-        } else {
-          // Try to parse JSON error if provided by Formspree
-          try {
-            const payload = await res.json();
-            if (payload && payload.errors && payload.errors.length) {
-              status.textContent = payload.errors.map(err => err.message).join(' ');
-            } else {
-              status.textContent = 'Oops, there was an error. Please try again later.';
-            }
-          } catch (_) {
-            status.textContent = 'Oops, there was an error. Please try again later.';
-          }
-          status.style.color = '#b91c1c';
+        await window.saveContactMessage({ name, email, message });
+        status.style.color = '';
+        status.textContent = 'Thanks! Your message has been sent.';
+        form.reset();
+        if (typeof window.trackEvent === 'function') {
+          window.trackEvent('contact_submit_success');
         }
       } catch (err) {
-        status.textContent = 'Network error. If running locally, start a server (e.g., “npx http-server .”) and try again.';
+        console.error('Contact form Firestore write failed:', err);
         status.style.color = '#b91c1c';
+        status.textContent = 'Could not send right now. Please email me directly at mafujuls@gmail.com.';
+        if (typeof window.trackEvent === 'function') {
+          window.trackEvent('contact_submit_error', { code: err?.code || 'unknown' });
+        }
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
       }
     });
   }
