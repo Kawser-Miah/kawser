@@ -160,10 +160,11 @@
     }
   </script>
 
-  <!-- Firebase Analytics (loaded as ES module from gstatic CDN) -->
+  <!-- Firebase Analytics + Firestore (loaded as ES module from gstatic CDN) -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
     import { getAnalytics, logEvent, setAnalyticsCollectionEnabled } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-analytics.js";
+    import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyBEaLTLFh2KreyJLrRy_qKltEyHvZG5Y1g",
@@ -177,6 +178,7 @@
 
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
+    const db = getFirestore(app);
 
     // Respect Do Not Track
     if (navigator.doNotTrack === "1" || window.doNotTrack === "1") {
@@ -185,6 +187,18 @@
 
     // Expose a small helper for analytics.js (non-module script)
     window.trackEvent = (name, params) => logEvent(analytics, name, params || {});
+
+    // Contact-form helper: writes a sanitized message into Firestore.
+    window.saveContactMessage = (payload) => addDoc(collection(db, 'contact_messages'), {
+      name: String(payload.name || '').slice(0, 200),
+      email: String(payload.email || '').slice(0, 300),
+      message: String(payload.message || '').slice(0, 5000),
+      createdAt: serverTimestamp(),
+      userAgent: navigator.userAgent.slice(0, 300),
+      referrer: (document.referrer || '').slice(0, 300),
+      page: location.pathname
+    });
+
     window.dispatchEvent(new CustomEvent('firebase-analytics-ready'));
   </script>
 </head>
@@ -602,10 +616,8 @@
             </ul>
           </div>
         </div>
-        <!-- Contact Form -->
-        <!-- IMPORTANT: Replace {your-formspree-id} with your real Formspree form ID -->
-        <form id="contact-form" class="contact-form" action="https://formspree.io/f/{your-formspree-id}" method="POST"
-          novalidate>
+        <!-- Contact Form (writes to Firestore via window.saveContactMessage) -->
+        <form id="contact-form" class="contact-form" novalidate>
 
           <div class="form-field">
             <label for="contact-name">
