@@ -1,5 +1,48 @@
 [
   {
+    "id": "blood-setu",
+    "title": "Blood Setu",
+    "short": "A real-time blood donation matching platform built with Flutter and Firebase, featuring geohash-based donor discovery, live chat with presence tracking, and a full Clean Architecture BLoC pattern.",
+    "description": "Blood Setu is a production-grade Flutter application that connects blood donors with recipients across Bangladesh using geolocation and real-time data synchronization. The platform implements geohash-based radius-ring search with progressive radius expansion (10→20→40→80 km doubling) and per-blood-group radius caching in SharedPreferences for optimal geo-query performance. Real-time 1-to-1 chat is powered by parallel Firestore and Firebase Realtime Database streams — messages sync via Firestore while online presence and typing indicators operate on RTDB for sub-second latency. Blood request browsing uses cursor-based Firestore pagination triggered by scroll position, with search and compound filters applied client-side without re-fetching. Atomic Firestore batch writes and transactions ensure data consistency across denormalized collections — a single 'I'm Coming' action writes to two subcollections atomically, and donation recording updates totalDonations, donor tier, and eligibility across both profile and user_locations documents in a single transaction. The architecture strictly follows Clean Architecture with BLoC state management and Freezed sealed unions, GetIt + injectable dependency injection with code generation, and GoRouter with a ChangeNotifier-based auth guard for declarative redirect logic. Additional engineering depth includes PDF certificate generation with dynamic asset embedding, OpenStreetMap tile-based location picker with debounced reverse geocoding, and a multi-step registration flow with dual-write denormalization to keep a geo-queryable donor index in sync with the user profile.",
+    "features": [
+      "Geohash radius-ring pagination for nearby donor discovery — progressive radius expansion with per-blood-group caching to minimize redundant Firestore reads.",
+      "Real-time 1-to-1 chat using concurrent Firestore (messages) and Firebase RTDB (presence + typing) stream subscriptions with optimistic send and auto mark-as-read.",
+      "Cursor-based infinite scroll pagination for blood requests with live search and compound blood group + urgency filters.",
+      "Atomic Firestore batch writes and transactions — interest registration, donation recording, and profile updates across denormalized collections with guaranteed consistency.",
+      "Clean Architecture with BLoC + Freezed sealed unions, repository pattern, and use-case layer decoupled from all Firebase dependencies.",
+      "GoRouter declarative navigation with ChangeNotifier-based auth refresh guard — auth state changes automatically re-evaluate redirect rules.",
+      "GetIt + injectable DI with build_runner code generation — all BLoCs, repositories, and services resolved via the service locator.",
+      "Dual-write denormalization at registration and profile edit — atomically updates both profile/{uid} and a geo-queryable user_locations/{uid} collection in one batch.",
+      "PDF donation certificate generation with dynamic image asset embedding and native share sheet via the printing package.",
+      "OpenStreetMap tile-based interactive location picker with debounced reverse geocoding and named-record return type."
+    ],
+    "tech": [
+      "Flutter",
+      "Dart",
+      "Firebase Firestore",
+      "Firebase Realtime Database",
+      "Firebase Authentication",
+      "BLoC",
+      "Freezed",
+      "Clean Architecture",
+      "GetIt",
+      "injectable",
+      "GoRouter",
+      "Geohash",
+      "Geolocator",
+      "flutter_map",
+      "OpenStreetMap",
+      "Google Sign-In",
+      "PDF Generation",
+      "REST API",
+      "SharedPreferences",
+      "Cursor Pagination"
+    ],
+    "thumbnail": "./assets/images/project-blood-setu.webp",
+    "live": "",
+    "repo": "https://github.com/Kawser-Miah/Emergency-Blood-Donation-Network"
+  },
+  {
     "id": "farmer-assistance-backend",
     "title": "Farmer Assistance Backend",
     "short": "A FastAPI backend for smart farming with crop disease detection, AI chat, irrigation prediction, and market price forecasting using ML models.",
