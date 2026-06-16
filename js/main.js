@@ -448,7 +448,7 @@
     function getPreferredTheme() {
       const saved = localStorage.getItem(THEME_KEY);
       if (saved === 'light' || saved === 'dark') return saved;
-      return 'dark'; // default to dark mode
+      return 'light'; // default to light mode
     }
 
     function applyTheme(theme) {
