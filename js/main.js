@@ -340,7 +340,7 @@
     const links = modal.querySelector('.modal-links');
 
     title.textContent = project.title;
-    desc.textContent = project.description;
+    desc.innerHTML = project.description;
 
     const featurePoints = Array.isArray(project.features)
       ? project.features.map(p => (typeof p === 'string' ? p.trim() : '')).filter(p => p.length > 0)
