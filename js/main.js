@@ -12,7 +12,7 @@
 (function(){
   const header = document.getElementById('header');
   const navLinks = document.querySelectorAll('.nav-link');
-  const sections = ['home','about','education','skills','experience','projects','achievements','blog','contact'].map(id => document.getElementById(id));
+  const sections = ['home','about','skills','experience','education','projects','achievements','blog','contact'].map(id => document.getElementById(id));
   const backToTop = document.getElementById('backToTop');
   const nav = document.querySelector('.nav');
   const navToggle = document.querySelector('.nav-toggle');
