@@ -35,7 +35,9 @@ All content is data-driven. `js/main.js` fetches each JSON file and renders the 
 
 **Project modal:** Clicking a project card calls `openModal(project, invoker)`. The modal uses `desc.innerHTML` (not `textContent`) so the `description` field in `projects.json` can contain raw HTML for rich formatting. Features list and tech tags are rendered separately from the description.
 
-**Theme system:** Dark/light toggle stores preference in `localStorage` under the key `site-theme`. The default is `light` (no `data-theme` attribute on `<html>`). Dark mode is activated by setting `data-theme="dark"` on `<html>`. All theme colors are CSS custom properties in `css/style.css`.
+**Theme system:** Dark/light toggle stores preference in `localStorage` under the key `site-theme`. The default is `light` (no `data-theme` attribute on `<html>`). Dark mode is activated by setting `data-theme="dark"` on `<html>`. CSS colors live as custom properties in `css/style.css`: `:root { … }` is the light palette, `:root[data-theme="dark"]` overrides for dark.
+
+`getPreferredTheme()` (`js/main.js`) resolves order: saved `localStorage` value → else `light`. It does **not** check the OS `prefers-color-scheme` — first-time visitors always get light regardless of system setting. (The README claims "system theme detection"; that is not actually implemented.) `prefers-color-scheme` appears only in the `<meta name="theme-color">` tags and the reduced-motion check, not in theme resolution.
 
 **Two JS files, distinct concerns:**
 - `js/main.js` — all rendering, UI behavior, and interactions (the table above plus theme toggle, nav, modal, etc.). Self-invoking IIFE; no exports.
