@@ -190,7 +190,12 @@
       projectsGrid.appendChild(card);
     });
   }
-  fetch('./data/projects.json').then(r => r.json()).then(data => { projectsData = data; renderProjects(data); }).catch(() => {
+  const appsBuiltEl = document.getElementById('apps-built-value');
+  fetch('./data/projects.json').then(r => r.json()).then(data => {
+    projectsData = data;
+    renderProjects(data);
+    if (appsBuiltEl) appsBuiltEl.textContent = `${data.length}+`;
+  }).catch(() => {
     if (projectsGrid) projectsGrid.innerHTML = '<p>Failed to load projects.</p>';
   });
 
