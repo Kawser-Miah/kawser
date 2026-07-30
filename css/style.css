@@ -1055,6 +1055,12 @@
     opacity: 0.85;
   }
 
+  .experience-logo {
+    display: block;
+    object-fit: contain;
+    border-radius: 6px;
+  }
+
   .education-content {
     flex: 1;
     display: grid;
