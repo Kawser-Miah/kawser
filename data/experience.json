@@ -19,6 +19,7 @@
     "company": "eBooster (Coseries)",
     "startDate": "June 2024",
     "endDate": "November 2025",
+    "logo": "./assets/images/logo-coseries.png",
     "responsibilities": [
       "Built gamification modules, quiz systems, and reading-progress tracking features.",
       "Redesigned grammar and vocabulary pages for better UI/UX.",

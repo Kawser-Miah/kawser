@@ -1059,6 +1059,9 @@
     display: block;
     object-fit: contain;
     border-radius: 6px;
+    background: #ffffff;
+    padding: 4px;
+    box-sizing: border-box;
   }
 
   .education-content {
