@@ -163,8 +163,12 @@
       card.className = 'project-card';
       card.setAttribute('tabindex', '0');
       card.setAttribute('aria-label', `${p.title} — open details`);
-      const techBadges = p.tech && p.tech.length > 0 
-        ? p.tech.map(t => `<span class='tag' aria-hidden="true">${t}</span>`).join('') 
+      const TAG_LIMIT = 8;
+      const visibleTech = p.tech ? p.tech.slice(0, TAG_LIMIT) : [];
+      const hiddenTechCount = p.tech ? Math.max(0, p.tech.length - TAG_LIMIT) : 0;
+      const techBadges = p.tech && p.tech.length > 0
+        ? visibleTech.map(t => `<span class='tag' aria-hidden="true">${t}</span>`).join('')
+          + (hiddenTechCount > 0 ? `<span class='tag tag-more' aria-hidden="true">+${hiddenTechCount} more</span>` : '')
         : `<span class='tag' aria-hidden="true">Technology: N/A</span>`;
       const techList = p.tech && p.tech.length > 0 ? p.tech.join(', ') : 'N/A';
       

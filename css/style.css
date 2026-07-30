@@ -748,6 +748,15 @@
     }
   }
 
+  /* Below 900px the grid is single-column, stacking the photo directly under
+     the Hero section's own headshot with nothing in between — hide it here
+     so that duplication doesn't happen (mirrors the max-width: 767px rule). */
+  @media (max-width: 899px) {
+    .about-photo {
+      display: none;
+    }
+  }
+
   .about-photo img {
     border-radius: var(--radius-xl);
     box-shadow: var(--shadow-xl);
@@ -974,6 +983,17 @@
 
   :root[data-theme="dark"] .tag:hover {
     background: color-mix(in srgb, var(--accent) 25%, transparent);
+  }
+
+  .tag-more {
+    background: transparent;
+    color: var(--muted);
+    border: 1px dashed var(--border);
+  }
+
+  :root[data-theme="dark"] .tag-more {
+    background: transparent;
+    color: var(--muted);
   }
 
   /* Project card footer action buttons — flush with card edges */
@@ -1592,11 +1612,6 @@
 
   .about-grid {
     text-align: center;
-  }
-
-  .about-photo {
-    display: flex;
-    justify-content: center;
   }
 
   .about-facts {
