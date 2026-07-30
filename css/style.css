@@ -788,6 +788,8 @@
 
   .about-facts li {
     margin-bottom: var(--space-sm);
+    padding-left: 1.4em;
+    text-indent: -1.4em;
     opacity: 0;
     cursor: default;
     transition: transform 0.25s var(--ease-out), color 0.25s var(--ease-out);
@@ -1053,6 +1055,15 @@
     flex-shrink: 0;
     color: var(--accent);
     opacity: 0.85;
+  }
+
+  .experience-logo {
+    display: block;
+    object-fit: contain;
+    border-radius: 6px;
+    background: #ffffff;
+    padding: 4px;
+    box-sizing: border-box;
   }
 
   .education-content {

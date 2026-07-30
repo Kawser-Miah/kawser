@@ -1,9 +1,25 @@
 [
   {
+    "title": "Trainee Flutter Developer",
+    "company": "Join Venture AI",
+    "startDate": "July 2026",
+    "endDate": "Present",
+    "logo": "./assets/images/logo-join-venture-ai.png",
+    "responsibilities": [
+      "Engineered core UI for Mili, a Grab/Gojek-style marketplace with multi-stage Google Maps-integrated booking flows across 9 service verticals.",
+      "Built real-time features — live bidding, driver tracking, and in-app chat — via a custom WebSocket service layer and Dio/Retrofit typed networking.",
+      "Applied Clean Architecture with Riverpod (code-generated providers) and Freezed for scalable, type-safe state management.",
+      "Designed and built Coach Hub, a two-sided coaching marketplace with a full booking lifecycle engine (request → accept/decline → schedule → review) and role-based navigation for coaches and clients.",
+      "Currently integrating a typed Dio/Retrofit and WebSocket backend for Coach Hub, replacing the initial hand-rolled HTTP layer as the app moves off mock data.",
+      "Implemented dependency injection (GetIt/Injectable) and GoRouter across production codebases."
+    ]
+  },
+  {
     "title": "Flutter App Developer",
     "company": "eBooster (Coseries)",
     "startDate": "June 2024",
     "endDate": "November 2025",
+    "logo": "./assets/images/logo-coseries.png",
     "responsibilities": [
       "Built gamification modules, quiz systems, and reading-progress tracking features.",
       "Redesigned grammar and vocabulary pages for better UI/UX.",

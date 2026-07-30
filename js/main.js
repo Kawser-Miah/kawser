@@ -18,6 +18,17 @@
   const navToggle = document.querySelector('.nav-toggle');
   const navLinksAll = document.querySelectorAll('.nav-list .nav-link');
 
+  // Years of experience: auto-calculated from a start date to today, rounded
+  // down to the nearest half-year (e.g. 1+, 1.5+, 2+) so it never overstates.
+  const yearsExpEl = document.getElementById('years-exp-value');
+  if (yearsExpEl && yearsExpEl.dataset.start) {
+    const start = new Date(yearsExpEl.dataset.start);
+    const diffYears = (Date.now() - start.getTime()) / (1000 * 60 * 60 * 24 * 365.25);
+    const rounded = Math.floor(diffYears * 2) / 2;
+    const display = Number.isInteger(rounded) ? rounded.toString() : rounded.toFixed(1);
+    yearsExpEl.textContent = `${display}+`;
+  }
+
   // Scroll progress bar
   const scrollProgress = document.getElementById('scroll-progress');
   const updateScrollProgress = () => {
@@ -179,7 +190,12 @@
       projectsGrid.appendChild(card);
     });
   }
-  fetch('./data/projects.json').then(r => r.json()).then(data => { projectsData = data; renderProjects(data); }).catch(() => {
+  const appsBuiltEl = document.getElementById('apps-built-value');
+  fetch('./data/projects.json').then(r => r.json()).then(data => {
+    projectsData = data;
+    renderProjects(data);
+    if (appsBuiltEl) appsBuiltEl.textContent = `${data.length}+`;
+  }).catch(() => {
     if (projectsGrid) projectsGrid.innerHTML = '<p>Failed to load projects.</p>';
   });
 
@@ -294,12 +310,15 @@
       li.className = 'education-item';
       const dateRange = `${exp.startDate} – ${exp.endDate}`;
       const responsibilitiesHTML = exp.responsibilities.map(r => `<li>${r}</li>`).join('');
+      const iconHTML = exp.logo
+        ? `<img src="${exp.logo}" alt="${exp.company} logo" class="experience-logo" width="32" height="32" loading="lazy">`
+        : `<svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/>
+            </svg>`;
       li.innerHTML = `
         <article class="education-card" aria-label="${exp.title} at ${exp.company}">
           <div class="education-icon" aria-hidden="true">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/>
-            </svg>
+            ${iconHTML}
           </div>
           <div class="education-content">
             <h3 class="education-degree">${exp.title} — ${exp.company}</h3>
