@@ -18,6 +18,17 @@
   const navToggle = document.querySelector('.nav-toggle');
   const navLinksAll = document.querySelectorAll('.nav-list .nav-link');
 
+  // Years of experience: auto-calculated from a start date to today, rounded
+  // down to the nearest half-year (e.g. 1+, 1.5+, 2+) so it never overstates.
+  const yearsExpEl = document.getElementById('years-exp-value');
+  if (yearsExpEl && yearsExpEl.dataset.start) {
+    const start = new Date(yearsExpEl.dataset.start);
+    const diffYears = (Date.now() - start.getTime()) / (1000 * 60 * 60 * 24 * 365.25);
+    const rounded = Math.floor(diffYears * 2) / 2;
+    const display = Number.isInteger(rounded) ? rounded.toString() : rounded.toFixed(1);
+    yearsExpEl.textContent = `${display}+`;
+  }
+
   // Scroll progress bar
   const scrollProgress = document.getElementById('scroll-progress');
   const updateScrollProgress = () => {
