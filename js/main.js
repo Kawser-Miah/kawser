@@ -104,13 +104,11 @@
     var keys = Object.keys(STICKERS);
     var colors = ['var(--blue)', 'var(--green)', 'var(--orange)'];
     var last = { x: 0, y: 0, t: 0 };
-    var idc = 0;
     window.addEventListener('mousemove', function (e) {
       var now = performance.now();
       var dist = Math.hypot(e.clientX - last.x, e.clientY - last.y);
       if (now - last.t < 28 || dist < 10) return;
       last = { x: e.clientX, y: e.clientY, t: now };
-      var id = idc++;
       var angle = Math.random() * Math.PI * 2;
       var throwDist = 45 + Math.random() * 75;
       var dx = Math.cos(angle) * throwDist;
@@ -246,6 +244,9 @@
       return 'light';
     }
     function applyTheme(theme) {
+      var color = theme === 'dark' ? '#0A0E1A' : '#2563EB';
+      if (metaLight) metaLight.setAttribute('content', color);
+      if (metaDark) metaDark.setAttribute('content', color);
       if (theme === 'dark') {
         html.setAttribute('data-theme', 'dark');
         if (toggle) toggle.setAttribute('aria-pressed', 'true');
@@ -526,7 +527,6 @@
 
   /* ── Projects ── */
   var projectsGrid = document.getElementById('projects-grid');
-  var projectsData = [];
   var CARD_TAG_LIMIT = 4;
 
   function renderProjects(list) {
@@ -581,7 +581,6 @@
   var appsBuiltEl = document.getElementById('apps-built-value');
   var bubbleAppsShipped = document.getElementById('bubbleAppsShipped');
   fetch('./data/projects.json').then(function (r) { return r.json(); }).then(function (data) {
-    projectsData = data;
     renderProjects(data);
     pendingAppsCount = data.length;
     if (appsBuiltEl && !statsGo) appsBuiltEl.textContent = data.length + '+';
