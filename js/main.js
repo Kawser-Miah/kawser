@@ -8,11 +8,32 @@
   - Reveal-on-scroll
   - Skills / Experience / Education / Projects / Blog loaders
   - Accessible project details modal with focus trap
-  - Contact form (no backend — directs to email) + Firebase/gtag analytics hooks
-  - Terminal AI-assistant chat widget
+  - Contact form (POSTs to the portfolio API) + Firebase/gtag analytics hooks
+  - Terminal AI-assistant chat widget (AI mode → portfolio API /chat, RAG)
 */
 (function () {
   'use strict';
+
+  /* ============================================================
+     Portfolio backend API (FastAPI — contact + RAG chat only)
+     ============================================================ */
+  var API_BASE = 'https://api.kawser.me/api/v1';
+
+  // fetch() with an abort-based timeout so a hung request can't leave the UI stuck.
+  function apiFetch(path, body, timeoutMs) {
+    var ctrl = typeof AbortController !== 'undefined' ? new AbortController() : null;
+    var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, timeoutMs || 20000);
+    return fetch(API_BASE + path, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+      signal: ctrl ? ctrl.signal : undefined
+    }).then(function (res) {
+      return res.json().catch(function () { return {}; }).then(function (data) {
+        return { ok: res.ok, status: res.status, data: data };
+      });
+    }).finally(function () { clearTimeout(timer); });
+  }
 
   /* ============================================================
      Ambient background + cursor sticker trail
@@ -723,18 +744,74 @@
   }
 
   /* ============================================================
-     Contact form — no backend wired up, directs visitors to email
+     Contact form — POSTs to API_BASE + '/contact'
      ============================================================ */
   var form = document.getElementById('contact-form');
   if (form) {
     var CONTACT_EMAIL = 'kawsermiah.cse@gmail.com';
+    var mailtoLink = '<a href="mailto:' + CONTACT_EMAIL + '">' + CONTACT_EMAIL + '</a>';
+    var statusEl = document.getElementById('form-status');
+    var submitBtn = form.querySelector('.form-submit-btn');
+    var nameInput = document.getElementById('contact-name');
+    var emailInput = document.getElementById('contact-email');
+    var msgInput = document.getElementById('contact-message');
+    var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var sending = false;
+
+    function setStatus(html, kind) {
+      if (!statusEl) return;
+      statusEl.classList.remove('is-success', 'is-error');
+      if (kind) statusEl.classList.add(kind);
+      statusEl.innerHTML = html;
+    }
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      var status = document.getElementById('form-status');
-      if (!status) return;
-      status.classList.remove('is-success');
-      status.innerHTML = 'Please send your message directly to <a href="mailto:' + CONTACT_EMAIL + '">' + CONTACT_EMAIL + '</a>.';
-      if (typeof window.trackEvent === 'function') window.trackEvent('contact_submit_redirect');
+      if (sending) return;
+
+      var name = (nameInput.value || '').trim();
+      var email = (emailInput.value || '').trim();
+      var message = (msgInput.value || '').trim();
+
+      // Mirror the backend's Pydantic rules so obvious mistakes never leave the page.
+      if (name.length < 2 || name.length > 100) {
+        setStatus('Please enter your name (2–100 characters).', 'is-error'); nameInput.focus(); return;
+      }
+      if (!EMAIL_RE.test(email)) {
+        setStatus('Please enter a valid email address.', 'is-error'); emailInput.focus(); return;
+      }
+      if (message.length < 10 || message.length > 5000) {
+        setStatus('Your message should be 10–5000 characters.', 'is-error'); msgInput.focus(); return;
+      }
+
+      sending = true;
+      submitBtn.disabled = true;
+      var restoreLabel = submitBtn.innerHTML;
+      submitBtn.textContent = 'sending…';
+      setStatus('Sending your message…', null);
+
+      apiFetch('/contact', { name: name, email: email, message: message }, 20000)
+        .then(function (r) {
+          if (r.ok) {
+            form.reset();
+            setStatus('Message sent — thanks! I’ll get back to you within 24–48 hours.', 'is-success');
+          } else if (r.status === 422) {
+            var first = r.data && r.data.errors && r.data.errors[0];
+            setStatus(first && first.msg ? first.msg : 'Please check the form and try again.', 'is-error');
+          } else if (r.status === 429) {
+            setStatus('Too many messages sent from here recently. Please try later, or email me at ' + mailtoLink + '.', 'is-error');
+          } else {
+            setStatus('The server had a problem sending that. Please email me directly at ' + mailtoLink + '.', 'is-error');
+          }
+        })
+        .catch(function () {
+          setStatus('Couldn’t reach the server. Please email me directly at ' + mailtoLink + '.', 'is-error');
+        })
+        .finally(function () {
+          sending = false;
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = restoreLabel;
+        });
     });
   }
 
@@ -760,23 +837,11 @@
   } catch (e) {}
 
   /* ============================================================
-     Terminal AI-assistant chatbot (kept verbatim to the design spec)
+     Terminal AI-assistant chatbot.
+     Slash commands are canned (see COMMANDS). AI mode sends the
+     question to API_BASE + '/chat' (RAG over the portfolio docs).
      ============================================================ */
   (function () {
-    function botReply(q) {
-      var t = q.toLowerCase();
-      if (/flutter|dart|mobile/.test(t)) return "Flutter is Kawser's primary stack — Clean Architecture, Bloc, Riverpod. 11+ apps, 2 on stores.";
-      if (/experience|work|job|jvai|joinventure/.test(t)) return 'Currently Trainee Flutter Dev at JoinVenture AI (JVAI) — real-time bidding, WebSockets, GPS tracking.';
-      if (/project|built|ship/.test(t)) return '11+ apps: live bidding platform, GPS fleet tracker, ML skin classifier, geolocation matching, offline notes, HackTheAI RAG project.';
-      if (/skill|tech|stack/.test(t)) return 'Flutter · Dart · Clean Architecture · Bloc · Riverpod · WebSockets · FastAPI · TensorFlow · CNN · RAG · GitHub Actions';
-      if (/education|university|degree|gub|green/.test(t)) return "B.Sc. CSE at Green University of Bangladesh (GUB). Dean's Merit Award (Fall 2025) & Vice Chancellor's Merit Award (Spring 2024).";
-      if (/hack|award|achiev|merit/.test(t)) return "Ranked 14th of 242 teams at HackTheAI 2025 (Top 50). Dean's Merit + Vice Chancellor's Merit Award from GUB.";
-      if (/contact|email|hire/.test(t)) return 'Email: kawsermiah.cse@gmail.com — responds within 24–48 hrs.';
-      if (/backend|api|python|ml|ai/.test(t)) return 'FastAPI/Python backends with TensorFlow CNNs and RAG pipelines wired to Flutter frontends.';
-      if (/hi|hello|hey/.test(t)) return "Hey! Ask about Kawser's Flutter projects, GUB education, tech stack, or how to hire him.";
-      return 'Ask me about Kawser\'s Flutter work, tech stack, education, or how to get in touch!';
-    }
-
     var COMMANDS = [
       { cmd: '/about', desc: 'Who is Kawser?', answer: 'Kawser Miah — Mobile Application Developer specializing in Flutter & Dart. Trainee Flutter Dev at JoinVenture AI (JVAI), B.Sc. CSE at Green University of Bangladesh. 11+ apps shipped, 2 on the stores.' },
       { cmd: '/skills', desc: 'Tech stack', answer: 'Core: Flutter · Dart · Clean Architecture · Bloc · Riverpod\nBackend: FastAPI · Python · Firebase · REST\nRealtime: WebSockets · GPS · Geolocation\nML/AI: TensorFlow · CNN · RAG · LangChain\nDevOps: GitHub Actions · CI/CD · Docker · Git' },
@@ -807,6 +872,7 @@
     var chatOpen = false;
     var aiMode = false;
     var typing = false;
+    var awaitingAI = false;
     var selCmd = 0;
 
     function renderMsgs() {
@@ -816,7 +882,8 @@
         } else if (m.role === 'sys') {
           return '<div class="chat-msg role-sys"><span class="text">' + escapeHtml(m.text) + '</span></div>';
         }
-        return '<div class="chat-msg role-b"><span class="arrow">→</span><span class="text">' + escapeHtml(m.text) + '</span></div>';
+        var body = m.md ? mdLite(m.text) : escapeHtml(m.text);
+        return '<div class="chat-msg role-b"><span class="arrow">→</span><span class="text">' + body + '</span></div>';
       }).join('');
       if (typing) {
         scrollEl.innerHTML += '<div class="chat-typing"><span class="arrow">→</span>' +
@@ -830,6 +897,17 @@
       return String(s).replace(/[&<>"']/g, function (c) {
         return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
       });
+    }
+    // Minimal, safe Markdown for AI answers: everything is HTML-escaped first,
+    // then only **bold**, `code`, and "- " bullets are re-introduced. Newlines
+    // are left as-is (the .text bubble is white-space: pre-wrap).
+    function mdLite(s) {
+      return escapeHtml(s)
+        .replace(/^\s{0,3}#{1,6}\s+/gm, '')
+        .replace(/^(\s*)[-*]\s+/gm, '$1• ')
+        .replace(/\*\*([^*\n]+)\*\*/g, '<strong>$1</strong>')
+        .replace(/(^|[^*])\*([^*\n]+)\*(?!\*)/g, '$1<em>$2</em>')
+        .replace(/`([^`\n]+)`/g, '<code>$1</code>');
     }
 
     function renderPalette() {
@@ -886,19 +964,36 @@
         return;
       }
 
+      if (awaitingAI) return;
       msgs.push({ id: Date.now(), role: 'u', text: text });
       if (!aiMode) {
         msgs.push({ id: Date.now() + 1, role: 'sys', text: 'command mode: type / to see commands, or switch on AI mode (top-right) to ask anything.' });
         renderMsgs();
         return;
       }
+      askAI(text);
+    }
+
+    function askAI(question) {
+      awaitingAI = true;
       typing = true;
       renderMsgs();
-      setTimeout(function () {
+      var finish = function (text, role) {
         typing = false;
-        msgs.push({ id: Date.now() + 1, role: 'b', text: botReply(text) });
+        awaitingAI = false;
+        msgs.push({ id: Date.now() + 1, role: role || 'b', text: text, md: !role });
         renderMsgs();
-      }, 750 + Math.random() * 600);
+      };
+      apiFetch('/chat', { question: question }, 35000)
+        .then(function (r) {
+          if (r.ok && r.data && r.data.answer) { finish(r.data.answer); return; }
+          if (r.status === 429) { finish('I’m getting a lot of questions right now — give it a minute and try again.', 'sys'); return; }
+          if (r.status === 422) { finish('That question was a little too short or too long — try rephrasing it.', 'sys'); return; }
+          finish('The assistant hit an error. Try again, or use the slash commands — /about, /skills, /projects.', 'sys');
+        })
+        .catch(function () {
+          finish('Couldn’t reach the assistant. Try again in a moment, or use /about, /skills, /projects.', 'sys');
+        });
     }
 
     function send() { runInput(input.value); }
