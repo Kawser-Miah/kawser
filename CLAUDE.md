@@ -31,7 +31,7 @@ All content is data-driven. `js/main.js` fetches each JSON file and renders the 
 |---|---|---|
 | Skills | `data/skills.json` | `renderSkills()` → flat chip cloud in a single terminal window |
 | Experience | `data/experience.json` | `renderExperience()` → one entry per job inside a shared terminal window |
-| Education | `data/education.json` | `renderEducation()` → one card per entry; Green University gets the special animated GUB badge, others get a generic grad-cap badge |
+| Education | `data/education.json` | `renderEducation()` → one card per entry; every entry gets the same animated crest badge (`.edu-badge` — green gradient medallion + orbiting dashed rings + pulse), Green University's shows `GUB` / `EST. 2003` lettering (`.is-gub`), every other school shows a white grad-cap glyph (`.edu-badge-cap`) |
 | Projects | `data/projects.json` | `renderProjects()` → phone-mockup cards + `.pd-*` details modal |
 | Blog | `data/blog.json` | `renderBlog()` |
 
