@@ -843,13 +843,13 @@
      ============================================================ */
   (function () {
     var COMMANDS = [
-      { cmd: '/about', desc: 'Who is Kawser?', answer: 'Kawser Miah — Mobile Application Developer specializing in Flutter & Dart. Trainee Flutter Dev at JoinVenture AI (JVAI), B.Sc. CSE at Green University of Bangladesh. 11+ apps shipped, 2 on the stores.' },
-      { cmd: '/skills', desc: 'Tech stack', answer: 'Core: Flutter · Dart · Clean Architecture · Bloc · Riverpod\nBackend: FastAPI · Python · Firebase · REST\nRealtime: WebSockets · GPS · Geolocation\nML/AI: TensorFlow · CNN · RAG · LangChain\nDevOps: GitHub Actions · CI/CD · Docker · Git' },
-      { cmd: '/experience', desc: 'Work history', answer: 'Trainee Flutter Developer @ JoinVenture AI (JVAI), 2024 — present.\n→ Real-time WebSocket bidding systems\n→ GPS geolocation matching, offline-first Clean Architecture\n→ TensorFlow CNN + RAG pipelines via FastAPI\n→ GitHub Actions CI/CD for store releases' },
-      { cmd: '/projects', desc: 'Featured work', answer: '• live-bidding-app — real-time auction, sub-100ms bids\n• gps-fleet-tracker — live tracking + geofencing\n• geo-match — location-aware matching\n• ml-skin-classifier — on-device CNN + RAG\n• hacktheai-rag-assistant — ranked 14/242 at HackTheAI 2025\nType /projects on the site to see them all.' },
-      { cmd: '/education', desc: 'Academic background', answer: 'B.Sc. in Computer Science & Engineering — Green University of Bangladesh (2022 — present).\nDean\'s Merit Award (Fall 2025) · Vice Chancellor\'s Merit Award (Spring 2024).' },
-      { cmd: '/achievements', desc: 'Awards & rankings', answer: '🏆 HackTheAI 2025 — Ranked 14th of 242 teams (Top 50 Finalist)\n🎖 Dean\'s Merit Award — Green University\n🎖 Vice Chancellor\'s Merit Award — Green University' },
-      { cmd: '/contact', desc: 'Get in touch', answer: 'Email: kawsermiah.cse@gmail.com (responds in 24–48 hrs)\nGitHub: github.com/kawser\nOpen to Flutter / mobile roles.' },
+      { cmd: '/about', desc: 'Who is Kawser?', answer: 'Kawser Miah — Flutter developer building production-grade Android & iOS apps that are fast, scalable, and built to last. Trainee Flutter Developer @ Join Venture AI; pursuing a B.Sc. in CSE at Green University of Bangladesh. 11+ apps built, 2 on the stores.\nClean Architecture with Bloc & Riverpod, real-time WebSocket features, geohash geolocation matching, offline-first data layers — plus Python/FastAPI backends with ML (TensorFlow CNN inference, RAG pipelines). Top 50 finalist of 242 teams at HackTheAI 2025.' },
+      { cmd: '/skills', desc: 'Tech stack', answer: 'Mobile: Flutter · Dart · Kotlin · Clean Architecture · Bloc · Riverpod · Freezed\nBackend: FastAPI · Python · RESTful APIs · Firebase · Supabase\nData: SQLite · MySQL\nML/AI: TensorFlow · CNN image classification · RAG pipelines\nTooling: Git · GitHub Actions CI/CD · Postman · VS Code · Android Studio' },
+      { cmd: '/experience', desc: 'Work history', answer: 'Trainee Flutter Developer @ Join Venture AI (Jul 2026 — present)\n→ Mili — Grab/Gojek-style marketplace, 9 service verticals, Maps-integrated booking flows\n→ Real-time live bidding, driver tracking & in-app chat over a custom WebSocket layer\n→ Coach Hub — two-sided coaching marketplace with a full booking lifecycle engine\n→ Clean Architecture, code-gen Riverpod, Freezed, GetIt/Injectable, GoRouter\n\nFlutter App Developer @ eBooster / Coseries (Jun 2024 — Nov 2025)\n→ Gamification modules, quiz systems & reading-progress tracking\n→ SQLite (Floor) + SharedPreferences data migration\n→ Flutter Bloc + Clean Architecture' },
+      { cmd: '/projects', desc: 'Featured work', answer: '• Mili (Join Venture AI) — Uber/Grab-style marketplace, WebSocket bidding + live GPS tracking\n• Electrician Apprentice Hours — hour logging with 6 NEC calculators + LLM voice input\n• Blood Setu — real-time geohash donor matching, live chat with presence\n• Farmer Assistance Backend — FastAPI + TensorFlow CNN disease detection, ML price forecasting\n• Secure File Vault — custom Snake Matrix XOR + RSA encrypted storage\n• DeenHub — all-in-one Islamic app, 35k+ Hadith offline\nType /projects on the site to see all 11.' },
+      { cmd: '/education', desc: 'Academic background', answer: 'B.Sc. in Computer Science & Engineering — Green University of Bangladesh (Sep 2022 — Sep 2026)\nHigher Secondary Certificate (HSC) — Adhyapak Abdul Majid College (2019 — 2021)\nDean\'s Merit Award (Fall 2025) · Vice Chancellor\'s Merit Award (Spring 2024).' },
+      { cmd: '/achievements', desc: 'Awards & rankings', answer: '🏆 HackTheAI 2025 — Ranked 14th of 242 teams (Top 50 Finalist)\n🎖 Dean\'s Merit Award — Fall 2025 · Green University of Bangladesh\n🎖 Vice Chancellor\'s Merit Award — Spring 2024 · Green University of Bangladesh' },
+      { cmd: '/contact', desc: 'Get in touch', answer: 'Email: kawsermiah.cse@gmail.com (replies within 24–48 hrs)\nGitHub: github.com/Kawser-Miah\nLinkedIn: linkedin.com/in/kawser-miah\nOpen to Flutter / mobile roles, freelance contracts & collaborations.' },
       { cmd: '/help', desc: 'List all commands', answer: '' },
       { cmd: '/clear', desc: 'Clear the terminal', answer: '' }
     ];
@@ -925,6 +925,9 @@
         btn.addEventListener('mousedown', function (e) { e.preventDefault(); runInput(btn.getAttribute('data-cmd')); });
         btn.addEventListener('mouseenter', function () { selCmd = i; renderPalette(); });
       });
+      // Keep the highlighted item visible when navigating the (scrollable) list with the arrow keys.
+      var activeItem = paletteEl.querySelector('.chat-palette-item.is-active');
+      if (activeItem) activeItem.scrollIntoView({ block: 'nearest' });
       return list;
     }
 
