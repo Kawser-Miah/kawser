@@ -332,7 +332,7 @@ img { max-width: 100%; display: block; }
 }
 
 /* Hero right: orbit scene */
-.hero-visual-col { display: none; flex-direction: column; align-items: center; gap: 24px; animation: fadeIn 0.5s ease 1s both; }
+.hero-visual-col { display: flex; flex-direction: column; align-items: center; gap: 24px; animation: fadeIn 0.5s ease 1s both; }
 .orbit-scene { position: relative; width: 100%; max-width: 460px; aspect-ratio: 1; margin: 0 auto; }
 .orbit-glow {
   position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
@@ -415,6 +415,8 @@ img { max-width: 100%; display: block; }
 }
 .skill-chip:hover { color: var(--blue); border-color: color-mix(in srgb, var(--blue) 45%, transparent); transform: translateY(-2px); }
 .skill-chip img { width: 15px; height: 15px; flex-shrink: 0; }
+/* devicon's GitHub mark is near-black (#181616) and vanishes on the dark chip — flip it to white */
+:root[data-theme="dark"] .skill-chip img[src*="/github/"] { filter: invert(1); }
 
 /* ── Experience ── */
 .exp-term-body { padding: 8px 24px 20px; }
@@ -447,11 +449,6 @@ img { max-width: 100%; display: block; }
   border-bottom: 2px solid var(--gub-green); font-family: var(--font-mono); font-size: 0.7rem; color: var(--fg);
 }
 .edu-card-body { padding: 28px; display: flex; align-items: flex-start; gap: 24px; flex-wrap: wrap; }
-.edu-generic-badge {
-  width: 76px; height: 76px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center;
-  background: color-mix(in srgb, var(--gub-green) 16%, var(--bg-3)); border: 2px solid color-mix(in srgb, var(--gub-green) 45%, transparent); color: var(--gub-green);
-}
-.edu-generic-badge svg { width: 32px; height: 32px; }
 .edu-info { flex: 1; min-width: 200px; }
 .edu-degree { font-family: var(--font-mono); font-weight: 800; font-size: 1.15rem; line-height: 1.25; margin-bottom: 6px; }
 .edu-school { font-family: var(--font-mono); font-size: 0.8rem; color: var(--gub-green); font-weight: 600; margin-bottom: 4px; }
@@ -459,27 +456,30 @@ img { max-width: 100%; display: block; }
 .edu-meta-row .edu-date { font-family: var(--font-mono); font-size: 0.68rem; color: var(--orange); }
 .edu-meta-row .edu-notes { font-family: var(--font-mono); font-size: 0.68rem; color: var(--muted); }
 
-/* GUB badge */
-.gub-badge { position: relative; width: 76px; height: 76px; flex-shrink: 0; }
-.gub-badge::before, .gub-badge::after {
+/* Education crest badge — shared by every entry so the university and college
+   read as the same component; the GUB entry adds its lettering via .is-gub. */
+.edu-badge { position: relative; width: 76px; height: 76px; flex-shrink: 0; }
+.edu-badge::before, .edu-badge::after {
   content: ''; position: absolute; border-radius: 50%; border: 1.5px dashed var(--gub-green);
 }
-.gub-badge::before { inset: -6px; opacity: 0.5; animation: spinBorder 12s linear infinite; }
-.gub-badge::after { inset: -3px; opacity: 0.3; border-style: solid; border-width: 1px; animation: spinBorder 20s linear infinite reverse; }
-.gub-badge-core {
+.edu-badge::before { inset: -6px; opacity: 0.5; animation: spinBorder 12s linear infinite; }
+.edu-badge::after { inset: -3px; opacity: 0.3; border-style: solid; border-width: 1px; animation: spinBorder 20s linear infinite reverse; }
+.edu-badge-core {
   width: 100%; height: 100%; border-radius: 50%; position: relative; overflow: hidden;
   background: linear-gradient(145deg, #1B6B2F 0%, #0D4A1A 60%, #1B6B2F 100%);
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   border: 2px solid rgba(45,154,72,0.6); animation: gubPulse 3s ease-in-out infinite;
 }
-.gub-badge-core .sheen {
+.edu-badge-core .sheen {
   position: absolute; top: 0; left: 0; right: 0; height: 55%;
   background: linear-gradient(180deg, rgba(255,255,255,0.13) 0%, transparent 100%); border-radius: 50% 50% 0 0;
 }
-.gub-badge-core .mono-crest { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: 0.08; }
-.gub-badge-core .mono-crest svg { width: 65%; height: 75%; }
-.gub-badge-core .gub-text { font-family: var(--font-mono); font-weight: 800; font-size: 0.95rem; color: #fff; letter-spacing: 0.01em; z-index: 1; line-height: 1; text-shadow: 0 1px 4px rgba(0,0,0,0.4); }
-.gub-badge-core .gub-est { font-family: var(--font-mono); font-size: 0.44rem; color: rgba(255,255,255,0.65); letter-spacing: 0.08em; z-index: 1; margin-top: 3px; }
+.edu-badge-core .mono-crest { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: 0.08; }
+.edu-badge-core .mono-crest svg { width: 65%; height: 75%; }
+.edu-badge-core .gub-text { font-family: var(--font-mono); font-weight: 800; font-size: 0.95rem; color: #fff; letter-spacing: 0.01em; z-index: 1; line-height: 1; text-shadow: 0 1px 4px rgba(0,0,0,0.4); }
+.edu-badge-core .gub-est { font-family: var(--font-mono); font-size: 0.44rem; color: rgba(255,255,255,0.65); letter-spacing: 0.08em; z-index: 1; margin-top: 3px; }
+.edu-badge-core .edu-badge-cap { z-index: 1; display: flex; color: rgba(255,255,255,0.92); filter: drop-shadow(0 1px 3px rgba(0,0,0,0.35)); }
+.edu-badge-core .edu-badge-cap svg { width: 34px; height: 34px; }
 
 .edu-awards { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
 .edu-award-row { display: flex; align-items: flex-start; gap: 12px; flex-wrap: wrap; }
@@ -848,7 +848,6 @@ textarea.code-input { resize: vertical; }
 }
 @media (min-width: 1024px) {
   .hero-inner { grid-template-columns: 1fr 1fr; }
-  .hero-visual-col { display: flex; }
   .about-grid, .contact-grid { grid-template-columns: 1fr 1fr; }
   .exp-entry { grid-template-columns: 160px 1fr; }
   .projects-grid { grid-template-columns: repeat(3, 1fr); }
