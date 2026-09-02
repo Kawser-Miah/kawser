@@ -496,11 +496,13 @@
       var isGUB = /green university/i.test(edu.school || '');
       var li = document.createElement('li');
       li.className = 'reveal-scale' + (i % 6 ? ' d' + ((i % 6) + 1) : '');
-      var badgeHtml = isGUB
-        ? '<div class="gub-badge"><div class="gub-badge-core"><div class="sheen"></div>' +
+      var badgeInner = isGUB
+        ? '<div class="sheen"></div>' +
           '<div class="mono-crest"><svg viewBox="0 0 60 70"><path d="M30 2 L58 14 L58 38 C58 54 30 68 30 68 C30 68 2 54 2 38 L2 14 Z" fill="white"/></svg></div>' +
-          '<span class="gub-text">GUB</span><span class="gub-est">EST. 2003</span></div></div>'
-        : '<div class="edu-generic-badge">' + GRAD_CAP_ICON + '</div>';
+          '<span class="gub-text">GUB</span><span class="gub-est">EST. 2003</span>'
+        : '<div class="sheen"></div><span class="edu-badge-cap">' + GRAD_CAP_ICON + '</span>';
+      var badgeHtml = '<div class="edu-badge' + (isGUB ? ' is-gub' : '') + '">' +
+        '<div class="edu-badge-core">' + badgeInner + '</div></div>';
       var eduCard = document.createElement('div');
       eduCard.className = 'edu-card';
       eduCard.innerHTML =
@@ -681,6 +683,12 @@
 
     modal.classList.remove('hidden');
     document.body.classList.add('no-scroll');
+
+    // The modal is a persistent node — reset every scrollable region to the top
+    // so a new project never opens mid-way down from the previous one.
+    modal.scrollTop = 0;
+    var pdDetails = modal.querySelector('.pd-details');
+    if (pdDetails) pdDetails.scrollTop = 0;
 
     var modalContent = modal.querySelector('.pd-panel');
     var focusables = getFocusable(modalContent);
