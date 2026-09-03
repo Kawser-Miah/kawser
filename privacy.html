@@ -1,187 +1,324 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy Policy | Kawser Miah</title>
-  <meta name="description" content="Privacy policy for Kawser Miah's portfolio website.">
-  
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="./assets/images/headshot.png">
-  <link rel="apple-touch-icon" href="./assets/images/headshot.png">
-  <link rel="canonical" href="https://kawser.me/privacy.html" />
-  <meta name="theme-color" content="#0f766e" />
+  <meta name="description" content="Privacy policy for Kawser Miah's portfolio website — what the contact form, AI chat widget, and analytics collect.">
+  <meta name="robots" content="index, follow" />
 
-  <!-- Fonts: Inter (normal + italic) -->
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/headshot.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/headshot.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/headshot.png">
+  <link rel="canonical" href="https://kawser.me/privacy.html" />
+
+  <!-- Theme Colors -->
+  <meta name="theme-color" content="#2563EB" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0A0E1A" media="(prefers-color-scheme: dark)" />
+
+  <!-- Fonts: JetBrains Mono (UI/terminal chrome) + Inter (body copy) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="./css/style.css" />
+
   <style>
-    .privacy-content {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 120px 20px 60px;
+    /* ── Privacy page (terminal theme) ── */
+    .privacy-main { padding: 120px 0 80px; }
+    .privacy-wrap { max-width: 820px; margin: 0 auto; }
+
+    .privacy-term .term-body {
+      padding: 32px clamp(20px, 4vw, 44px) 40px;
+      background: var(--bg-2);
     }
-    .privacy-content h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      color: #0f766e;
+
+    .privacy-kicker {
+      font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em;
+      color: var(--muted); margin-bottom: 10px;
     }
-    .privacy-content h2 {
-      font-size: 1.75rem;
-      margin-top: 2.5rem;
-      margin-bottom: 1rem;
-      color: #0f172a;
+    .privacy-kicker .accent-green { color: var(--green); }
+
+    .privacy-main h1 {
+      font-family: var(--font-mono); font-weight: 800;
+      font-size: clamp(1.7rem, 4vw, 2.3rem); line-height: 1.2;
+      color: var(--fg); margin-bottom: 8px;
     }
-    .privacy-content p {
-      line-height: 1.8;
-      margin-bottom: 1.5rem;
-      color: #64748b;
-    }
-    .privacy-content ul {
-      margin-bottom: 1.5rem;
-      padding-left: 2rem;
-      color: #64748b;
-    }
-    .privacy-content ul li {
-      margin-bottom: 0.75rem;
-      line-height: 1.8;
-    }
-    .privacy-content strong {
-      color: #0f172a;
-    }
-    .privacy-content a {
-      color: #0f766e;
-      text-decoration: underline;
-    }
-    .privacy-content a:hover {
-      color: #0d5f58;
-    }
-    .back-link {
-      display: inline-block;
-      margin-top: 2rem;
-      padding: 0.75rem 1.5rem;
-      background: #0f766e;
-      color: #ffffff !important;
-      text-decoration: none;
-      border-radius: 8px;
-      transition: all 0.2s ease;
-      font-weight: 600;
-    }
-    .back-link:hover {
-      background: #0d5f58;
-      transform: translateX(-4px);
-      color: #ffffff !important;
-    }
+    .privacy-main h1 .caret { color: var(--blue); }
+
     .last-updated {
-      font-size: 0.9rem;
-      color: #64748b;
-      font-style: italic;
-      margin-bottom: 2rem;
+      font-family: var(--font-mono); font-size: 0.75rem;
+      color: var(--muted); margin-bottom: 28px;
     }
+
+    .privacy-main h2 {
+      font-family: var(--font-mono); font-weight: 700;
+      font-size: 1.05rem; color: var(--fg);
+      margin: 40px 0 14px; padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    .privacy-main h2::before { content: "// "; color: var(--blue); }
+
+    .privacy-main p,
+    .privacy-main li {
+      font-family: var(--font-body); font-size: 0.95rem; line-height: 1.75;
+      color: var(--fg-2);
+    }
+    .privacy-main p { margin-bottom: 16px; }
+    .privacy-main ul { margin: 0 0 18px; padding-left: 1.4rem; }
+    .privacy-main ul li { margin-bottom: 10px; }
+    .privacy-main ul li::marker { color: var(--green); }
+
+    .privacy-main strong { color: var(--fg); font-weight: 600; }
+    .privacy-main code {
+      font-family: var(--font-mono); font-size: 0.82em;
+      background: var(--bg-3); color: var(--fg);
+      padding: 2px 6px; border-radius: 4px;
+    }
+    .privacy-main a {
+      color: var(--blue); text-decoration: none;
+      border-bottom: 1px solid color-mix(in srgb, var(--blue) 40%, transparent);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .privacy-main a:hover { color: var(--green); border-bottom-color: var(--green); }
+
+    .privacy-back {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 36px; font-family: var(--font-mono); font-size: 0.82rem;
+      color: var(--blue); text-decoration: none;
+      padding: 10px 18px; border: 1px solid var(--border); border-radius: 6px;
+      background: var(--bg-3); transition: border-color 0.2s, transform 0.2s;
+    }
+    .privacy-back:hover { border-color: var(--blue); transform: translateX(-3px); }
   </style>
 </head>
 
 <body>
+  <!-- Skip Navigation -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- Ambient background layer (populated by JS) -->
+  <div class="bg-fx" id="bgFx" aria-hidden="true">
+    <div class="bg-grid"></div>
+  </div>
+  <!-- Cursor sticker trail layer (populated by JS) -->
+  <div class="cursor-trail-layer" id="cursorTrail" aria-hidden="true"></div>
+
+  <!-- Header -->
   <header id="header" class="site-header" role="banner">
     <div class="container header-inner">
-      <a href="./index.html" class="logo" aria-label="Go to home">
-        <span aria-hidden="true">KM</span>
+      <a href="./index.html#hero" class="logo" aria-label="Kawser Miah — go to home">
+        <span class="logo-name">kawser</span><span class="logo-dot">.</span><span class="logo-tld">dev</span>
       </a>
-      <nav aria-label="Primary navigation">
-        <ul id="navList" class="nav-list">
-          <li><a href="./index.html#home" class="nav-link">Home</a></li>
-          <li><a href="./index.html#contact" class="nav-link">Contact</a></li>
-        </ul>
-      </nav>
+
+      <ul id="navList" class="nav-list" aria-label="Main navigation">
+        <li><a href="./index.html#about" class="nav-link">about</a></li>
+        <li><a href="./index.html#projects" class="nav-link">projects</a></li>
+        <li><a href="./index.html#contact" class="nav-link">contact</a></li>
+      </ul>
+
+      <div class="nav-controls">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+          <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"/><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"/></svg>
+        </button>
+
+        <a class="btn-mono btn-mono-primary cv-header-btn" href="./index.html#contact">
+          hire_me()
+        </a>
+      </div>
     </div>
   </header>
 
-  <main class="privacy-content">
-    <h1>Privacy Policy</h1>
-    <p class="last-updated">Last updated: November 14, 2025</p>
+  <!-- Main Content -->
+  <main id="main" class="privacy-main">
+    <div class="container">
+      <div class="privacy-wrap">
+        <div class="term-window privacy-term">
+          <div class="term-titlebar">
+            <div class="term-dots"><span></span><span></span><span></span></div>
+            <span class="term-filename">$ cat privacy_policy.md</span>
+          </div>
+          <div class="term-body">
+            <p class="privacy-kicker"><span class="accent-green">#</span> legal / how your data is handled</p>
+            <h1><span class="caret">&gt;</span> Privacy Policy</h1>
+            <p class="last-updated">// last updated: September 3, 2026</p>
 
-    <p>This privacy policy explains how I collect, use, and protect your personal information when you visit my portfolio website.</p>
+            <p>
+              This is a personal portfolio site. It is intentionally minimal and collects as little
+              about you as possible. This page explains exactly what happens with the small amount
+              of data the site does touch — through the contact form, the AI chat widget, and analytics.
+            </p>
 
-    <h2>Information Collection</h2>
-    <p>I collect minimal information when you visit this website:</p>
-    <ul>
-      <li><strong>Contact Form Data:</strong> If you submit the contact form, I collect your name, email address, and message content to respond to your inquiry.</li>
-      <li><strong>Analytics Data:</strong> Basic usage statistics may be collected through analytics tools (if enabled) to understand how visitors use the site. This includes pages visited, time spent, and general geographic location.</li>
-      <li><strong>Technical Data:</strong> Standard server logs may record IP addresses, browser type, and referral sources.</li>
-    </ul>
+            <h2>What gets collected</h2>
+            <ul>
+              <li>
+                <strong>Contact form:</strong> when you submit the form, your <strong>name</strong>,
+                <strong>email address</strong>, and <strong>message</strong> are sent to my own API
+                (<code>api.kawser.me</code>) so I can read and reply to your message. Nothing else is
+                attached to it.
+              </li>
+              <li>
+                <strong>AI chat widget:</strong> if you switch the chat widget into <strong>AI mode</strong>
+                and type a free-text question, that question text is sent to the same API
+                (<code>api.kawser.me/api/v1/chat</code>), which runs it against a knowledge base built
+                from this site's public content and returns an answer. Your question and your IP address
+                are processed there for rate-limiting (a few requests per minute per IP). The built-in
+                slash commands (<code>/about</code>, <code>/skills</code>, …) run entirely in your
+                browser and send nothing.
+              </li>
+              <li>
+                <strong>Analytics:</strong> the site loads <strong>Google Firebase Analytics</strong>
+                (measurement ID <code>G-CSDSPWMJ10</code>), which records aggregate usage —
+                pages/sections viewed, time on page, approximate location, device and browser type,
+                and referral source. If your browser sends a <strong>Do Not Track</strong> signal,
+                analytics collection is switched off automatically.
+              </li>
+              <li>
+                <strong>Server logs:</strong> the hosting provider (GitHub Pages) and the contact/chat
+                API may keep standard request logs, including IP address and user agent, for security
+                and abuse prevention.
+              </li>
+            </ul>
 
-    <h2>How I Use Your Information</h2>
-    <p>The information collected is used for:</p>
-    <ul>
-      <li>Responding to your messages and inquiries</li>
-      <li>Improving the website's content and user experience</li>
-      <li>Analyzing website traffic and usage patterns</li>
-      <li>Maintaining website security and preventing abuse</li>
-    </ul>
+            <h2>What it's used for</h2>
+            <ul>
+              <li>Replying to messages you send me through the contact form.</li>
+              <li>Answering questions you ask the AI chat widget.</li>
+              <li>Understanding, in aggregate, which parts of the site people find useful.</li>
+              <li>Keeping the contact form and chat endpoint from being abused (rate limiting, spam filtering).</li>
+            </ul>
+            <p>Your information is never sold, rented, or used for advertising.</p>
 
-    <h2>Data Sharing</h2>
-    <p>I do not sell, trade, or share your personal information with third parties, except:</p>
-    <ul>
-      <li><strong>Service Providers:</strong> Contact form submissions may be processed through Formspree or similar services.</li>
-      <li><strong>Analytics Providers:</strong> If analytics are enabled, anonymized usage data may be shared with providers like Google Analytics or Plausible.</li>
-      <li><strong>Legal Requirements:</strong> Information may be disclosed if required by law or to protect rights and safety.</li>
-    </ul>
+            <h2>Third-party services</h2>
+            <p>The site relies on these external services:</p>
+            <ul>
+              <li>
+                <strong>GitHub Pages</strong> — static hosting for this site.
+                See <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer">GitHub's Privacy Statement</a>.
+              </li>
+              <li>
+                <strong>Google Firebase / Google Analytics</strong> — usage analytics.
+                See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's Privacy Policy</a>.
+              </li>
+              <li>
+                <strong>Google Fonts</strong> — the JetBrains Mono and Inter typefaces are loaded from
+                Google's font CDN, which receives your IP address as part of that request.
+                See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's Privacy Policy</a>.
+              </li>
+              <li>
+                <strong>jsDelivr CDN</strong> — some skill icons are served from
+                <code>cdn.jsdelivr.net</code>.
+              </li>
+              <li>
+                <strong>api.kawser.me</strong> — my own backend service that handles contact-form
+                submissions and AI chat questions. It is operated by me and not shared with anyone else.
+              </li>
+            </ul>
 
-    <h2>Cookies and Tracking</h2>
-    <p>This website may use cookies for:</p>
-    <ul>
-      <li>Essential functionality (e.g., remembering preferences)</li>
-      <li>Analytics (if enabled) to understand visitor behavior</li>
-    </ul>
-    <p>You can disable cookies in your browser settings, though some features may not work properly.</p>
+            <h2>Cookies &amp; local storage</h2>
+            <p>
+              The site itself does not set any first-party tracking cookies. Your
+              <strong>theme preference</strong> (dark / light) is saved in your browser's
+              <code>localStorage</code> under the key <code>site-theme</code> and never leaves your device.
+              Google Firebase Analytics may set its own cookies / storage entries to measure usage —
+              you can block these in your browser settings without breaking the site.
+            </p>
 
-    <h2>Third-Party Services</h2>
-    <p>This website may use the following third-party services:</p>
-    <ul>
-      <li><strong>Formspree:</strong> For contact form processing. See <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">Formspree's Privacy Policy</a></li>
-      <li><strong>Google Fonts:</strong> For typography. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's Privacy Policy</a></li>
-      <li><strong>Analytics Services:</strong> May include Google Analytics or Plausible (if enabled)</li>
-    </ul>
+            <h2>Data retention</h2>
+            <p>
+              Contact-form messages are kept in my email / API records only as long as needed to
+              handle your enquiry and any follow-up. Analytics data is retained according to Google's
+              default retention settings. You can ask me to delete anything you've sent at any time.
+            </p>
 
-    <h2>Data Security</h2>
-    <p>I take reasonable measures to protect your information from unauthorized access, alteration, or disclosure. However, no method of transmission over the internet is 100% secure.</p>
+            <h2>Your rights</h2>
+            <ul>
+              <li>Ask what personal data of yours I hold.</li>
+              <li>Ask me to correct or delete it.</li>
+              <li>Withdraw consent for analytics (use Do Not Track, or a content blocker).</li>
+              <li>Complain to your local data protection authority.</li>
+            </ul>
 
-    <h2>Your Rights</h2>
-    <p>You have the right to:</p>
-    <ul>
-      <li>Request access to the personal data I hold about you</li>
-      <li>Request correction or deletion of your personal data</li>
-      <li>Withdraw consent for data processing</li>
-      <li>Lodge a complaint with a data protection authority</li>
-    </ul>
+            <h2>External links</h2>
+            <p>
+              This site links out to GitHub, LinkedIn, Facebook, app stores, and blog articles.
+              I'm not responsible for the privacy practices of those sites — check their own policies.
+            </p>
 
-    <h2>External Links</h2>
-    <p>This website contains links to external sites (GitHub, LinkedIn, Facebook, blog articles). I am not responsible for the privacy practices of these external sites.</p>
+            <h2>Children</h2>
+            <p>
+              This site isn't directed at children under 13, and I don't knowingly collect their
+              personal information.
+            </p>
 
-    <h2>Children's Privacy</h2>
-    <p>This website is not intended for children under 13 years of age. I do not knowingly collect personal information from children.</p>
+            <h2>Changes</h2>
+            <p>
+              If this policy changes, the "last updated" date above changes with it. Material changes
+              will be reflected here before they take effect.
+            </p>
 
-    <h2>Changes to This Policy</h2>
-    <p>I may update this privacy policy from time to time. The "Last updated" date at the top indicates when the policy was last revised. Continued use of the website after changes constitutes acceptance of the updated policy.</p>
+            <h2>Contact</h2>
+            <p>
+              Questions about this policy, or want something deleted? Email
+              <a href="mailto:kawsermiah.cse@gmail.com">kawsermiah.cse@gmail.com</a>.
+            </p>
 
-    <h2>Contact Me</h2>
-    <p>If you have questions about this privacy policy or want to exercise your privacy rights, please contact me at:</p>
-    <p><strong>Email:</strong> <a href="mailto:kawsermiah.cse@gmail.com">kawsermiah.cse@gmail.com</a></p>
-
-    <a href="./index.html" class="back-link">← Back to Portfolio</a>
+            <a href="./index.html" class="privacy-back">&larr; cd ~/home</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
 
-  <footer class="site-footer">
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
     <div class="container">
-      <p>© 2025 Kawser Miah — Built with ❤️ using HTML, CSS, JavaScript.</p>
-      <nav aria-label="Footer">
-        <a href="./privacy.html" aria-label="Privacy policy">Privacy</a>
-        <a href="./index.html#home" aria-label="Back to top">Back to top ↑</a>
+      <span class="footer-brand">
+        <span class="logo-name">kawser</span><span class="logo-dot">.</span><span class="logo-tld">dev</span>
+        <span class="footer-year"> · © <span id="footerYear">2026</span></span>
+      </span>
+      <span class="footer-tag">built with Flutter-level care · HTML, CSS &amp; JS</span>
+      <nav aria-label="Footer navigation">
+        <a href="./privacy.html">Privacy Policy</a>
+        <span aria-hidden="true">•</span>
+        <a href="./index.html#hero">Back to home ↑</a>
       </nav>
     </div>
   </footer>
+
+  <!-- Firebase Analytics (loaded as ES module from gstatic CDN) -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+    import { getAnalytics, logEvent, setAnalyticsCollectionEnabled } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-analytics.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBEaLTLFh2KreyJLrRy_qKltEyHvZG5Y1g",
+      authDomain: "my-portfolio-1f2e6.firebaseapp.com",
+      projectId: "my-portfolio-1f2e6",
+      storageBucket: "my-portfolio-1f2e6.firebasestorage.app",
+      messagingSenderId: "632726854113",
+      appId: "1:632726854113:web:36b15b7c0f3f1214485aa0",
+      measurementId: "G-CSDSPWMJ10"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+
+    // Respect Do Not Track
+    if (navigator.doNotTrack === "1" || window.doNotTrack === "1") {
+      setAnalyticsCollectionEnabled(analytics, false);
+    }
+
+    window.trackEvent = (name, params) => logEvent(analytics, name, params || {});
+    window.dispatchEvent(new CustomEvent('firebase-analytics-ready'));
+  </script>
+
+  <!-- Scripts -->
+  <script src="./js/main.js" defer></script>
+  <script src="./js/analytics.js" defer></script>
 </body>
+
 </html>
