@@ -865,6 +865,14 @@
     var promptGlyph = document.getElementById('chatPromptGlyph');
     if (!fab || !panel) return;
 
+    // Fire-and-forget Firebase Analytics (window.trackEvent is set by the
+    // Firebase module in index.html; may not exist yet / at all — always guard).
+    function trackChat(name, params) {
+      if (typeof window.trackEvent === 'function') {
+        try { window.trackEvent(name, params || {}); } catch (_) { /* never let analytics break the widget */ }
+      }
+    }
+
     var msgs = [
       { id: 0, role: 'sys', text: 'kawser-cli v1.0 — type / for commands, or toggle AI mode to ask anything.' },
       { id: 1, role: 'b', text: "Hey! I'm Kawser's terminal assistant. Try /about, /skills, or /projects." }
@@ -940,6 +948,7 @@
 
       if (text.charAt(0) === '/') {
         var name = text.split(/\s+/)[0].toLowerCase();
+        trackChat('chat_command', { command: name.slice(0, 40) });
         msgs.push({ id: Date.now(), role: 'u', text: text });
         renderMsgs();
 
@@ -981,21 +990,32 @@
       awaitingAI = true;
       typing = true;
       renderMsgs();
-      var finish = function (text, role) {
+      var now = function () { return (window.performance && performance.now) ? performance.now() : Date.now(); };
+      var startedAt = now();
+      // Log the question length / word count only — never the question text itself.
+      trackChat('chat_ai_question', {
+        length: Math.min(question.length, 5000),
+        words: Math.min(question.split(/\s+/).filter(Boolean).length, 500)
+      });
+      var finish = function (text, role, status) {
         typing = false;
         awaitingAI = false;
         msgs.push({ id: Date.now() + 1, role: role || 'b', text: text, md: !role });
         renderMsgs();
+        trackChat('chat_ai_response', {
+          status: status || 'ok',
+          latency_ms: Math.round(now() - startedAt)
+        });
       };
       apiFetch('/chat', { question: question }, 35000)
         .then(function (r) {
-          if (r.ok && r.data && r.data.answer) { finish(r.data.answer); return; }
-          if (r.status === 429) { finish('I’m getting a lot of questions right now — give it a minute and try again.', 'sys'); return; }
-          if (r.status === 422) { finish('That question was a little too short or too long — try rephrasing it.', 'sys'); return; }
-          finish('The assistant hit an error. Try again, or use the slash commands — /about, /skills, /projects.', 'sys');
+          if (r.ok && r.data && r.data.answer) { finish(r.data.answer, null, 'ok'); return; }
+          if (r.status === 429) { finish('I’m getting a lot of questions right now — give it a minute and try again.', 'sys', 'rate_limited'); return; }
+          if (r.status === 422) { finish('That question was a little too short or too long — try rephrasing it.', 'sys', 'invalid'); return; }
+          finish('The assistant hit an error. Try again, or use the slash commands — /about, /skills, /projects.', 'sys', 'error');
         })
         .catch(function () {
-          finish('Couldn’t reach the assistant. Try again in a moment, or use /about, /skills, /projects.', 'sys');
+          finish('Couldn’t reach the assistant. Try again in a moment, or use /about, /skills, /projects.', 'sys', 'network_error');
         });
     }
 
@@ -1009,11 +1029,13 @@
       var dot = fab.querySelector('.chat-fab-dot');
       if (dot) dot.style.display = chatOpen ? 'none' : '';
       if (chatOpen) { renderMsgs(); input.focus(); }
+      trackChat(chatOpen ? 'chat_open' : 'chat_close', { ai_mode: aiMode ? 'on' : 'off' });
     });
     closeBtn.addEventListener('click', function () { fab.click(); });
 
     aiToggleBtn.addEventListener('click', function () {
       aiMode = !aiMode;
+      trackChat('chat_ai_toggle', { state: aiMode ? 'on' : 'off' });
       aiToggleBtn.classList.toggle('is-on', aiMode);
       aiToggleBtn.innerHTML = '<span class="ai-dot"></span>AI ' + (aiMode ? 'ON' : 'OFF');
       promptGlyph.textContent = aiMode ? 'ai>' : '$';
