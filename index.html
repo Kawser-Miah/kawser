@@ -21,6 +21,15 @@
   <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/headshot.png">
   <link rel="canonical" href="https://kawser.me/" />
 
+  <!--
+    Google Search Console verification:
+    1. Go to https://search.google.com/search-console  →  add property  "https://kawser.me/"
+    2. Choose the "HTML tag" method, copy the <meta name="google-site-verification" ...> it gives you
+    3. Paste it directly below this comment, commit + push, then click "Verify"
+    4. In Search Console:  Sitemaps → submit  "sitemap.xml"  ,  then URL Inspection → "Request indexing" for https://kawser.me/
+  -->
+
+
   <!-- Theme Colors -->
   <meta name="theme-color" content="#2563EB" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#0A0E1A" media="(prefers-color-scheme: dark)" />
@@ -73,17 +82,25 @@
     {
       "@context": "https://schema.org",
       "@type": "Person",
+      "@id": "https://kawser.me/#person",
       "name": "Kawser Miah",
-      "alternateName": "Kawser Ahmed",
+      "givenName": "Kawser",
+      "familyName": "Miah",
       "jobTitle": "Mobile Application Developer",
       "description": "Mobile Application Developer specializing in Flutter cross-platform development. Building production-ready Android & iOS apps with Clean Architecture, Bloc, and published on Play Store, Huawei AppGallery, and Amazon Appstore.",
       "email": "kawsermiah.cse@gmail.com",
       "url": "https://kawser.me/",
+      "mainEntityOfPage": "https://kawser.me/",
       "image": "https://kawser.me/assets/images/headshot.png",
+      "nationality": {
+        "@type": "Country",
+        "name": "Bangladesh"
+      },
       "sameAs": [
         "https://github.com/Kawser-Miah",
         "https://www.linkedin.com/in/kawser-miah/",
-        "https://www.facebook.com/kawser.miah.me"
+        "https://www.facebook.com/kawser.miah.me",
+        "https://twitter.com/kawsermiah"
       ],
       "knowsAbout": [
         "Flutter Development",
@@ -112,6 +129,17 @@
         "@type": "CollegeOrUniversity",
         "name": "Green University of Bangladesh"
       }
+    }
+  </script>
+
+  <!-- ProfilePage Structured Data (tells Google this whole site is about one person) -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "url": "https://kawser.me/",
+      "name": "Kawser Miah — Flutter Developer",
+      "mainEntity": { "@id": "https://kawser.me/#person" }
     }
   </script>
 
@@ -157,10 +185,8 @@
       "name": "Kawser Miah — Flutter Developer Portfolio",
       "url": "https://kawser.me/",
       "description": "Portfolio of Kawser Miah, a Mobile Application Developer specializing in Flutter and cross-platform development.",
-      "author": {
-        "@type": "Person",
-        "name": "Kawser Miah"
-      }
+      "author": { "@id": "https://kawser.me/#person" },
+      "about": { "@id": "https://kawser.me/#person" }
     }
   </script>
 
