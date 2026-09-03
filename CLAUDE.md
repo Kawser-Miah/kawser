@@ -65,6 +65,8 @@ All content is data-driven. `js/main.js` fetches each JSON file and renders the 
 
 Note there are **two** analytics paths: `main.js` fires `window.gtag` (Google Analytics) for CV downloads, while `analytics.js` fires `window.trackEvent` (Firebase). Both may be active.
 
+The **chat widget** is the one exception where `main.js` itself fires Firebase events (via a guarded local `trackChat()` helper calling `window.trackEvent`), because the meaningful events live in the widget's internal state and `analytics.js` can't observe them: `chat_open`/`chat_close` (`{ai_mode}`), `chat_command` (`{command}` — the slash command name), `chat_ai_toggle` (`{state}`), `chat_ai_question` (`{length, words}` — **never the question text**), and `chat_ai_response` (`{status: ok|rate_limited|invalid|error|network_error, latency_ms}`).
+
 ## Data File Schemas
 
 ### `data/projects.json`
