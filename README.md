@@ -1,234 +1,180 @@
-# 🚀 Developer Portfolio Website – Kawser Miah
+# Developer Portfolio — Kawser Miah
 
-A modern, fully responsive, dark-mode enabled portfolio website showcasing my work as a **Flutter & Mobile Application Developer**.
+Personal portfolio website for **Kawser Miah**, a Flutter / Mobile Application Developer.
 
-🔗 **Live Website:** https://kawser-miah.github.io/kawser/  
-📧 **Email:** kawsermiah.cse@gmail.com  
-🐙 **GitHub:** https://github.com/Kawser-Miah  
-
----
-
-## 📌 Overview
-
-This platform serves as my official developer portfolio.  
-It displays my mobile apps, technical skills, resume, APK downloads, and professional identity.
-
-The site is built using **pure HTML, CSS, and JavaScript**, with dynamic project loading via JSON.  
-It is fast, lightweight, and extremely easy to maintain.
+🔗 **Live:** https://kawser.me/
+📧 **Email:** kawsermiah.cse@gmail.com
+🐙 **GitHub:** https://github.com/Kawser-Miah
+🔗 **LinkedIn:** https://www.linkedin.com/in/kawser-miah/
 
 ---
 
-## 🧩 Features
+## Overview
 
-### ✔ Fully Responsive UI  
-- Optimized for mobile, tablet, and desktop  
-- Clean grid layout  
-- Animated hamburger navigation  
-
-### ✔ Dark Mode  
-- System theme detection  
-- Manual toggle  
-- Smooth transitions  
-- LocalStorage persistence  
-
-### ✔ Dynamic Project Cards  
-- Data loaded from `/data/projects.json`  
-- Every project includes:
-  - Thumbnail  
-  - Description  
-  - Tech stack  
-  - Live demo / APK download  
-  - GitHub Repo  
-
-### ✔ APK & CV Download System  
-- Same-origin instant downloads  
-- Cross-origin blob fallback  
-- Identical experience for both APK and CV  
-
-### ✔ Accessibility  
-- ARIA attributes  
-- Keyboard navigation  
-- Focus-visible styles  
-- Reduced motion support  
-
-### ✔ SEO Optimized  
-- OpenGraph tags  
-- Meta description  
-- JSON-LD Person schema  
-- Lazy loading  
+A static site built with **plain HTML, CSS, and vanilla JavaScript** — no frameworks,
+no build tools, no backend. Every content section is rendered at runtime from JSON
+files under `data/`, so updating the site is usually just editing JSON.
 
 ---
 
-## 🛠️ Tech Stack
-
-- **HTML5**  
-- **CSS3**  
-- **JavaScript (ES6)**  
-- **JSON data**  
-- No frameworks, no backend  
-
----
-
-## 📂 Folder Structure
+## Project structure
 
 ```
-root/
-│── index.html
-│── style.css
-│── main.js
-│── README.md
-│── /assets
-│     ├── /images
-│     ├── /icons
-│     ├── /apk
-│     └── /resume
-└── /data
-      └── projects.json
+.
+├── index.html              # single page — all sections
+├── privacy.html            # privacy policy
+├── css/
+│   └── style.css           # all styles (design tokens + light/dark themes)
+├── js/
+│   ├── main.js             # rendering, nav, modal, theme toggle, typewriter, etc.
+│   └── analytics.js        # Firebase Analytics instrumentation layer
+├── data/
+│   ├── projects.json
+│   ├── blog.json
+│   ├── skills.json
+│   ├── education.json
+│   └── experience.json
+├── assets/
+│   ├── images/             # headshot, company logos, project thumbnails (.webp)
+│   └── resume/             # CV PDF
+├── CNAME                   # custom domain (kawser.me)
+├── robots.txt · sitemap.xml
+└── .github/workflows/deploy.yml
 ```
 
 ---
 
-## 🧱 Project Data System
+## Development
 
-All projects are defined inside:
+No build step. Serve the folder and open it:
 
+```bash
+python3 -m http.server 8080
+# or
+npx serve .
 ```
-/data/projects.json
-```
 
-Example structure:
+- **JSON changes** show up on a normal refresh.
+- **JS / CSS changes** need a hard refresh (Ctrl+Shift+R) to bypass cache.
+
+---
+
+## How it works
+
+`js/main.js` runs as a single IIFE. On load it `fetch()`es each JSON file and renders
+the matching section into the DOM:
+
+| Section      | Data file             | Render function      |
+| ------------ | --------------------- | -------------------- |
+| Projects     | `data/projects.json`  | `renderProjects()`   |
+| Blog         | `data/blog.json`      | `renderBlog()`       |
+| Skills       | `data/skills.json`    | `renderSkills()`     |
+| Education    | `data/education.json` | `renderEducation()`  |
+| Experience   | `data/experience.json`| `renderExperience()` |
+
+The **Achievements** section is currently hard-coded in `index.html` (not data-driven).
+
+Other behavior in `main.js`: sticky header + scroll-progress bar, `IntersectionObserver`
+scroll-reveal animations, active-nav highlighting, mobile nav toggle, hero typewriter
+effect, headshot zoom, project modal with focus trap, Shift+Click-to-copy email, and
+the dark/light theme toggle.
+
+### Theme
+
+Dark/light toggle stored in `localStorage` under `site-theme`. Default is **light**
+(no `data-theme` on `<html>`); dark mode sets `data-theme="dark"`. There is **no**
+OS `prefers-color-scheme` detection for theme — first-time visitors always get light.
+Colors are CSS custom properties in `css/style.css` (`:root` light, `:root[data-theme="dark"]` dark).
+
+### Analytics
+
+`index.html` initializes Firebase Analytics (GA4) inline and exposes
+`window.trackEvent(name, params)`. `js/analytics.js` waits for that helper, then
+instruments the rendered page with `IntersectionObserver` + a delegated click listener:
+section views, time-per-section, project-card clicks, external-link / `mailto:` clicks,
+CV downloads (`[data-analytics]`), theme toggles, and contact submits. `Do Not Track`
+is respected (collection is disabled).
+
+Adding a new tracked interaction usually means editing `analytics.js`, not `main.js`.
+
+### Contact form
+
+No backend. On submit it shows a message asking the visitor to email
+`kawsermiah.cse@gmail.com` directly.
+
+---
+
+## Data schemas
+
+### `data/projects.json`
 
 ```json
 {
-  "name": "DeenHub",
-  "thumbnail": "/assets/images/deenhub-banner.png",
-  "description": "An all-in-one Islamic lifestyle mobile application.",
-  "tech": ["Flutter", "Dart", "Firebase"],
-  "live": "/assets/apk/deenhub-v1.apk",
-  "repo": "https://github.com/Kawser-Miah/DeenHub"
+  "id": "kebab-case-id",
+  "title": "Project Title",
+  "short": "One-line summary shown on the card",
+  "description": "HTML string — rendered via innerHTML in the modal",
+  "features": ["Shown as <li> items", "..."],
+  "tech": ["Flutter", "Dart", "..."],
+  "thumbnail": "./assets/images/project-name.webp",
+  "live": "https://...  or  \"\"",
+  "repo": "https://github.com/...  or  \"\""
 }
 ```
 
-The website auto-renders cards based on this JSON.  
-No HTML editing is required.
+`features` may be `null` — the features block is hidden automatically.
+`description` supports full HTML.
 
----
+### `data/skills.json`
 
-## 📥 APK Download System
-
-### Behavior:
-- If `.apk` → download  
-- If URL → open in new tab  
-- If `.pdf` → trigger CV download  
-
-Example button:
-
-```html
-<a class="btn btn-secondary btn-download-apk" data-apk="/assets/apk/app.apk">
-  Download APK
-</a>
+```json
+{ "name": "Flutter", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" }
 ```
 
-Handled by JavaScript:
+### `data/blog.json`
 
-```js
-async function forceDownloadFile(url, filename) { ... }
+```json
+{ "title": "...", "summary": "...", "url": "https://...", "published": "YYYY-MM-DD" }
+```
+
+### `data/education.json`
+
+```json
+{ "degree": "...", "school": "...", "startDate": "2022", "endDate": "2026", "notes": "" }
+```
+
+### `data/experience.json`
+
+```json
+{
+  "title": "...",
+  "company": "...",
+  "startDate": "June 2024",
+  "endDate": "Present",
+  "logo": "./assets/images/logo-company.png",
+  "responsibilities": ["...", "..."]
+}
 ```
 
 ---
 
-## 📄 CV Download System
+## Updating projects
 
-CVs use the *same system* as APK downloads:
-
-```html
-<a class="btn btn-primary btn-download-cv"
-   data-cv="/assets/resume/Kawser-Miah-Resume.pdf">
-   Download CV
-</a>
-```
-
-JavaScript ensures a guaranteed download regardless of domain.
+1. Edit `data/projects.json`.
+2. Add or change an entry (see schema above).
+3. Save and refresh — the cards re-render automatically. No HTML changes needed.
 
 ---
 
-## 🌗 Dark Mode System
+## Deployment
 
-Dark mode works using:
-
-- CSS Custom Properties  
-- `[data-theme="dark"]` attribute  
-- System theme detection  
-- LocalStorage saving  
-- Fully themed UI elements  
-
-Dark mode affects:
-- Cards  
-- Text  
-- Buttons  
-- Background  
-- Navbar  
-- Shadows  
+GitHub Actions (`.github/workflows/deploy.yml`) deploys on every push to `main`:
+it publishes the repo root to the `gh-pages` branch via
+[`peaceiris/actions-gh-pages`](https://github.com/peaceiris/actions-gh-pages).
+GitHub Pages serves `gh-pages` at the `kawser.me` custom domain (`CNAME`).
 
 ---
 
-## 🚀 Deployment
+## License
 
-This is a static site.  
-Deploy anywhere:
-
-### Recommended:
-- Netlify  
-- GitHub Pages  
-- Vercel  
-- Cloudflare Pages  
-
-No backend or build tools required.
-
----
-
-## 🧰 Updating Projects
-
-1. Open:
-   ```
-   /data/projects.json
-   ```
-2. Add/edit project entries  
-3. Save  
-4. Refresh the site  
-
-Instant update — no coding required.
-
----
-
-## 🧑‍💻 About Me
-
-**Name:** Kawser Miah  
-**Role:** Mobile Application Developer  
-
-**Skills:**  
-- Flutter  
-- Dart  
-- Firebase  
-- Kotlin  
-- Ktor  
-- MySQL  
-- Git  
-- Python  
-
-I specialize in building scalable mobile apps with clean architecture and modern UI principles.
-
----
-
-## 📬 Contact
-
-📧 **Email:** kawsermiah.cse@gmail.com  
-🌐 **Portfolio:** https://kawser-miah.github.io/kawser/  
-🐙 **GitHub:** https://github.com/Kawser-Miah  
-🔗 **LinkedIn:** https://www.linkedin.com/in/kawser-miah/ 
-
----
-
-## 📜 License
-
-This portfolio, including all design, code, layout, and content, is personal and may not be copied without permission.
+Personal project. Design, code, and content may not be reused without permission.
