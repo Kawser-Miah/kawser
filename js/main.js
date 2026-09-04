@@ -930,8 +930,23 @@
           '<span class="cmd">' + c.cmd + '</span><span class="desc">' + c.desc + '</span></button>';
       }).join('');
       paletteEl.querySelectorAll('.chat-palette-item').forEach(function (btn, i) {
+        // touchstart fires before the input's blur triggers the on-screen keyboard's
+        // dismiss animation/reflow; waiting for mousedown/click alone means that reflow
+        // can shift the button out from under the finger mid-tap on mobile, so the tap
+        // is silently dropped. preventDefault here also suppresses the mousedown that
+        // would otherwise follow, so runInput only fires once.
+        btn.addEventListener('touchstart', function (e) { e.preventDefault(); runInput(btn.getAttribute('data-cmd')); }, { passive: false });
         btn.addEventListener('mousedown', function (e) { e.preventDefault(); runInput(btn.getAttribute('data-cmd')); });
-        btn.addEventListener('mouseenter', function () { selCmd = i; renderPalette(); });
+        // Only toggle the active class here, not a full renderPalette(): replacing the
+        // button DOM node under the cursor makes the browser immediately recompute hover
+        // and re-fire mouseenter on the new node, which was thrashing the whole list on
+        // every hover and made mousedown/click land on stale/wrong elements.
+        btn.addEventListener('mouseenter', function () {
+          selCmd = i;
+          paletteEl.querySelectorAll('.chat-palette-item').forEach(function (b, j) {
+            b.classList.toggle('is-active', j === i);
+          });
+        });
       });
       // Keep the highlighted item visible when navigating the (scrollable) list with the arrow keys.
       var activeItem = paletteEl.querySelector('.chat-palette-item.is-active');
