@@ -170,18 +170,16 @@
             <ul>
               <li>
                 <strong>Contact form:</strong> when you submit the form, your <strong>name</strong>,
-                <strong>email address</strong>, and <strong>message</strong> are sent to my own API
-                (<code>api.kawser.me</code>) so I can read and reply to your message. Nothing else is
-                attached to it.
+                <strong>email address</strong>, and <strong>message</strong> are sent to my own backend
+                service so I can read and reply to your message. Nothing else is attached to it.
               </li>
               <li>
                 <strong>AI chat widget:</strong> if you switch the chat widget into <strong>AI mode</strong>
-                and type a free-text question, that question text is sent to the same API
-                (<code>api.kawser.me/api/v1/chat</code>), which runs it against a knowledge base built
-                from this site's public content and returns an answer. Your question and your IP address
-                are processed there for rate-limiting (a few requests per minute per IP). The built-in
-                slash commands (<code>/about</code>, <code>/skills</code>, …) run entirely in your
-                browser and send nothing.
+                and type a free-text question, that question text is sent to that same backend service,
+                which runs it against a knowledge base built from this site's public content and returns
+                an answer. Your question and your IP address are processed there for rate-limiting (a few
+                requests per minute per IP). The built-in slash commands (<code>/about</code>,
+                <code>/skills</code>, …) run entirely in your browser and send nothing.
               </li>
               <li>
                 <strong>Analytics:</strong> the site loads <strong>Google Firebase Analytics</strong>
@@ -227,8 +225,8 @@
                 <code>cdn.jsdelivr.net</code>.
               </li>
               <li>
-                <strong>api.kawser.me</strong> — my own backend service that handles contact-form
-                submissions and AI chat questions. It is operated by me and not shared with anyone else.
+                <strong>My backend API</strong> — a private backend service I operate myself, which
+                handles contact-form submissions and AI chat questions. It is not shared with anyone else.
               </li>
             </ul>
 
