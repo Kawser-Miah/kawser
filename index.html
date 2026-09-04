@@ -125,10 +125,18 @@
         },
         "skills": "Flutter, Dart, Firebase, Clean Architecture, Flutter Bloc, SQLite"
       },
-      "alumniOf": {
-        "@type": "CollegeOrUniversity",
-        "name": "Green University of Bangladesh"
-      }
+      "alumniOf": [
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "Green University of Bangladesh",
+          "description": "B.Sc. in Computer Science & Engineering, September 2022 — September 2026"
+        },
+        {
+          "@type": "EducationalOrganization",
+          "name": "Adhyapak Abdul Majid College",
+          "description": "Higher Secondary Certificate (HSC), June 2019 — December 2021"
+        }
+      ]
     }
   </script>
 
@@ -508,7 +516,10 @@
               <p class="skills-note"><span class="slashes">//</span> languages, frameworks, and tools used in production</p>
               <ul class="skill-chip-cloud" id="skills-grid" role="list" aria-label="Technical skills">
                 <noscript>
-                  <li>Please enable JavaScript to view skills.</li>
+                  <li>Flutter</li><li>Dart</li><li>Kotlin</li><li>FastAPI</li><li>Firebase</li>
+                  <li>Supabase</li><li>SQLite</li><li>MySQL</li><li>Python</li><li>RESTful API</li>
+                  <li>Git</li><li>GitHub</li><li>VS Code</li><li>Android Studio</li>
+                  <li>Machine Learning</li><li>Postman</li>
                 </noscript>
               </ul>
             </div>
@@ -533,7 +544,31 @@
             </div>
             <ul class="exp-term-body" id="experience-list" role="list" aria-label="Work experience" style="list-style:none;">
               <noscript>
-                <li>Please enable JavaScript to view experience details.</li>
+                <li>
+                  <h3>Trainee Flutter Developer — Join Venture AI</h3>
+                  <p>July 2026 — Present</p>
+                  <ul>
+                    <li>Engineered core UI for Mili, a Grab/Gojek-style marketplace with multi-stage Google Maps-integrated booking flows across 9 service verticals.</li>
+                    <li>Built real-time features — live bidding, driver tracking, and in-app chat — via a custom WebSocket service layer and Dio/Retrofit typed networking.</li>
+                    <li>Applied Clean Architecture with Riverpod (code-generated providers) and Freezed for scalable, type-safe state management.</li>
+                    <li>Designed and built Coach Hub, a two-sided coaching marketplace with a full booking lifecycle engine (request → accept/decline → schedule → review) and role-based navigation for coaches and clients.</li>
+                    <li>Currently integrating a typed Dio/Retrofit and WebSocket backend for Coach Hub, replacing the initial hand-rolled HTTP layer as the app moves off mock data.</li>
+                    <li>Implemented dependency injection (GetIt/Injectable) and GoRouter across production codebases.</li>
+                  </ul>
+                </li>
+                <li>
+                  <h3>Flutter App Developer — eBooster (Coseries)</h3>
+                  <p>June 2024 — November 2025</p>
+                  <ul>
+                    <li>Built gamification modules, quiz systems, and reading-progress tracking features.</li>
+                    <li>Redesigned grammar and vocabulary pages for better UI/UX.</li>
+                    <li>Improved data migration using SQLite (Floor) + SharedPreferences.</li>
+                    <li>Added category-based learning progress and improved learning flow.</li>
+                    <li>Fixed major bugs and optimized app performance.</li>
+                    <li>Implemented state management using Flutter Bloc.</li>
+                    <li>Followed Clean Architecture for scalable and testable code.</li>
+                  </ul>
+                </li>
               </noscript>
             </ul>
           </div>
@@ -551,7 +586,16 @@
         </div>
         <ul class="edu-list" id="education-list" role="list" aria-label="Educational background" style="list-style:none;">
           <noscript>
-            <li>Please enable JavaScript to view education details.</li>
+            <li>
+              <h3>B.Sc. in Computer Science &amp; Engineering</h3>
+              <p>Green University of Bangladesh</p>
+              <p>September 2022 — September 2026</p>
+            </li>
+            <li>
+              <h3>Higher Secondary Certificate (HSC)</h3>
+              <p>Adhyapak Abdul Majid College</p>
+              <p>June 2019 — December 2021</p>
+            </li>
           </noscript>
         </ul>
       </div>
@@ -568,7 +612,59 @@
         <div id="projects-grid" class="projects-grid" role="list" aria-live="polite" aria-label="Project portfolio">
           <noscript>
             <div class="project-card">
-              <p>Please enable JavaScript to view projects.</p>
+              <h3>Mili (Join Venture AI)</h3>
+              <p>A Uber/Grab/Gojek-style on-demand marketplace platform built with Flutter, featuring real-time WebSocket bidding, live GPS trip tracking, and dual customer/driver experiences across nine service verticals.</p>
+              <p>Tech: Flutter, Dart, Riverpod, Freezed, Dio, Retrofit, WebSockets, Google Maps Flutter, Firebase Cloud Messaging, go_router, Clean Architecture</p>
+            </div>
+            <div class="project-card">
+              <h3>Electrician Apprentice Hours</h3>
+              <p>A production-grade Flutter app for electrician apprentices to log apprenticeship hours, featuring six real NEC engineering calculators with LLM-powered voice input, and a dual Firebase/SQLite backend architecture.</p>
+              <p>Tech: Flutter, Dart, flutter_bloc, Freezed, get_it, injectable, go_router, Firebase Auth, Cloud Firestore, froom (SQLite ORM), Dio, Retrofit, speech_to_text, LLM-based NLP parsing</p>
+            </div>
+            <div class="project-card">
+              <h3>Blood Setu</h3>
+              <p>A real-time blood donation matching platform built with Flutter and Firebase, featuring geohash-based donor discovery, live chat with presence tracking, and a full Clean Architecture BLoC pattern.</p>
+              <p>Tech: Flutter, Dart, Firebase Firestore, Firebase Realtime Database, Firebase Authentication, BLoC, Freezed, Clean Architecture, Geohash, flutter_map, OpenStreetMap</p>
+            </div>
+            <div class="project-card">
+              <h3>Farmer Assistance Backend</h3>
+              <p>A FastAPI backend for smart farming with crop disease detection, AI chat, irrigation prediction, and market price forecasting using ML models.</p>
+              <p>Tech: Python, FastAPI, TensorFlow, scikit-learn, XGBoost, CNN, Random Forest, OpenCV, Supabase, Google Gemini, sentence-transformers</p>
+            </div>
+            <div class="project-card">
+              <h3>AI-Powered Smart Farming Assistant (Group Project)</h3>
+              <p>An AI-based smart farming app with disease detection, crop recommendation, and predictive analytics using machine learning.</p>
+              <p>Tech: Flutter, Dart, Python, FastAPI, TensorFlow, Supabase, REST API, Machine Learning</p>
+            </div>
+            <div class="project-card">
+              <h3>Finance Tracker — Manage Your Money Effortlessly</h3>
+              <p>A personal finance management app built with Flutter to track income, expenses, and analytics.</p>
+              <p>Tech: Flutter, Dart, Bloc, Local Database, SQLite, Bar Charts, Clean Architecture</p>
+            </div>
+            <div class="project-card">
+              <h3>NamidVault — Secure Document Vault App (Client Project)</h3>
+              <p>Secure PDF storage app with expiry tracking, push notifications, and Emergency Access feature.</p>
+              <p>Tech: Flutter, Dart, Firebase, Firestore, Clean Architecture, GetIt</p>
+            </div>
+            <div class="project-card">
+              <h3>DeenHub App</h3>
+              <p>All-in-one Islamic app with 35k+ Hadith, prayer times, daily duas, Tasbih counter, Hijri calendar, and 99 Names of Allah.</p>
+              <p>Tech: Flutter, Dart, SQLite, Flutter Bloc, Clean Architecture, GetIt, SharedPreferences</p>
+            </div>
+            <div class="project-card">
+              <h3>English Booster</h3>
+              <p>Vocabulary learning app with swipe cards, spaced repetition, and progress tracking.</p>
+              <p>Tech: Flutter, Dart, SQLite, Flutter Bloc</p>
+            </div>
+            <div class="project-card">
+              <h3>Secure File Vault — Encrypted Document Storage</h3>
+              <p>A secure Flutter app for encrypted file storage using custom Snake Matrix XOR encryption.</p>
+              <p>Tech: Flutter, Dart, Firebase Authentication, Firebase Firestore, Firebase Storage, PointyCastle, RSA Encryption, ZLib Compression</p>
+            </div>
+            <div class="project-card">
+              <h3>Flutter News App</h3>
+              <p>A fully functional news application with REST API, Firebase Auth, SQLite offline storage, and Clean Architecture.</p>
+              <p>Tech: Flutter, Dart, REST API, Firebase Auth, SQLite, Flutter Bloc, Clean Architecture</p>
             </div>
           </noscript>
         </div>
@@ -647,7 +743,16 @@
         <div id="blog-grid" class="blog-grid" role="list" aria-live="polite" aria-label="Blog posts">
           <noscript>
             <div class="blog-card">
-              <p>Please enable JavaScript to view blog posts.</p>
+              <h3><a href="https://coseries.com/flutter-cachemanager/">Flutter CacheManager: A Complete Guide</a></h3>
+              <p>Learn how to efficiently cache and manage files in Flutter applications using flutter_cache_manager package.</p>
+            </div>
+            <div class="blog-card">
+              <h3><a href="https://coseries.com/flutter-speech-to-text/">Flutter Speech to Text: Implementation Guide</a></h3>
+              <p>Step-by-step guide to implementing speech recognition in Flutter apps with practical examples.</p>
+            </div>
+            <div class="blog-card">
+              <h3><a href="https://coseries.com/dart-json-utf-8-decode/">Dart JSON UTF-8 Decode: A Comprehensive Guide</a></h3>
+              <p>How to decode UTF-8 encoded JSON in Dart using dart:convert (utf8.decode and jsonDecode), with practical examples and tips.</p>
             </div>
           </noscript>
         </div>
